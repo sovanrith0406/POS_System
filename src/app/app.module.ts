@@ -12,6 +12,8 @@ import { LayoutModule } from 'app/layout/layout.module';
 import { AppComponent } from 'app/app.component';
 import { appRoutes } from 'app/app.routing';
 import { navigationApiServices } from './navigation';
+import { CustomPaginator } from './shared/CustomPaginatorConfiguration';
+import { MatPaginatorIntl } from '@angular/material/paginator';
 
 const routerConfig: ExtraOptions = {
     preloadingStrategy       : PreloadAllModules,
@@ -44,6 +46,9 @@ const routerConfig: ExtraOptions = {
     ],
     bootstrap   : [
         AppComponent
+    ],
+    providers   : [
+        { provide: MatPaginatorIntl, useValue: CustomPaginator() }
     ]
 })
 export class AppModule
