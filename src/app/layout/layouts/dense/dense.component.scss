@@ -1,0 +1,25 @@
+.bg-custom{
+    background-color: #1470ad !important;
+}
+.width{
+    min-width: 220px;
+    max-width: 220px;
+    min-height: 59px;
+    max-height: 59px;
+    padding-left: 5.5px;
+}
+.width img{
+    min-height: 57px;
+    max-height: 57px;
+}
+.custom-bg-navigation{
+    color: black !important;
+    background-color: #f5f5f5 !important;
+}
+.navigation-item:hover:not(.navigation-item-active){
+    background-color: rgb(235, 235, 235) !important;
+}
+.navigation-item-active{
+    background-color: #1470ad !important;
+    color: #f5f5f5 !important;
+}

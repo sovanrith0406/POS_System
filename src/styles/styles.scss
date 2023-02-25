@@ -1,0 +1,20 @@
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Import/write your custom styles here.
+/*  @ Styles from this file will override 'vendors.scss' and Helpers's base styles.
+/* ----------------------------------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Import/write your custom styles here.
+/*  @ Styles from this file will override 'vendors.scss' and Fuse's base styles.
+/* ----------------------------------------------------------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Hanuman', sans-serif , cursive !important;
+    font-weight: 400;
+    font-size: 15px; //do not change this
+}
+body {
+    touch-action: manipulation !important;
+}
+
