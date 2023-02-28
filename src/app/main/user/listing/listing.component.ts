@@ -81,7 +81,11 @@ export class ListingComponent implements OnInit {
     );
   }
 
-  deleteProject(project_id: number = 0): void {
+  changePassword(row: any): void {
+    console.log(row);
+  }
+
+  deleteUser(project_id: number = 0): void {
     const dialogRef = this._dialog.open(ConfirmDialogComponent);
     dialogRef.afterClosed().subscribe((result) => {
       console.log(result);

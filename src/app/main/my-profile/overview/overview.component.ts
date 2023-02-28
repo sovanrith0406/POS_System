@@ -19,11 +19,19 @@ export class OverviewComponent implements OnInit {
   public form: UntypedFormGroup;
 
   public url = env.apiUrl;
+  public file = env.fileUrl;
   public mode: any;
   public contact: any = [];
   public saving: boolean = false;
   public src: string = 'assets/images/avatars/profile.jpg';
   public data: any;
+  user: any = {
+    id: null,
+    name: null,
+    email: null,
+    avatar: null,
+    phone: null,
+  };
 
   constructor(
     private _serviceMyProfile: MyProfileService,
@@ -38,7 +46,7 @@ export class OverviewComponent implements OnInit {
       this.data = JSON.parse(this.data);
       if (!this.data) {
         localStorage.clear();
-        this._router.navigateByUrl('/auth/sign-in');
+        this._router.navigateByUrl('/auth/login');
       }
     }
     if (this.data) {
@@ -66,7 +74,23 @@ export class OverviewComponent implements OnInit {
     this._serviceMyProfile.updateProfile(this.form.value).subscribe((res: any) => {
       // Navigate to the confirmation required page
       this.saving = false;
-      console.log(res);
+      console.log(res.data);
+      this.form.enable();
+      if (res.data) {
+        console.log(res.data);
+        this.user.id = res.data.id;
+        this.user.email = res.data.email;
+        this.user.name = res.data.name;
+        this.user.avatar = res.data.avatar;
+        if (res.user.avatar == '') {
+          this.user.avatar = 'assets/images/avatars/default.jpg';
+        } else {
+          this.user.avatar = this.file + res.data.avatar;
+        }
+        this.user.phone = res.data.phone;
+        localStorage.setItem('user', JSON.stringify(this.user));
+      }
+      this._snackBar.openSnackBar(res.message, '');
     }, () => {
       // Re-enable the form
       this.form.enable();

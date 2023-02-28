@@ -86,12 +86,11 @@ export class AuthService
     {
         // Remove the access token from the local storage
         localStorage.clear();
+        // Return to login page
+        this._router.navigateByUrl('/auth/login');
         this._httpClient.post(this.url+'/auth/logout',{
             headers:new HttpHeaders().set('Content-Type', 'application/json')
         });
-
-        // Return to login page
-        this._router.navigateByUrl('/auth/login');
     }
 
     /**

@@ -110,16 +110,16 @@
                             <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="icon-button with a menu">
                                 <mat-icon class="icon-size-6" svgIcon="mat_outline:more_vert"></mat-icon>
                             </button>
-                            <mat-menu #menu="matMenu" class="relative z-99999">
-                                <button mat-menu-item [routerLink]="['/sup/users/' + element?.id + '/info']">
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item (click)="changePassword(element)">
                                     <mat-icon class="icon-size-5" svgIcon="mat_solid:vpn_key"></mat-icon>
                                     <span class="text-lg text-gray-500">ផ្លាស់ប្តូរពាក្យសម្ងាត់</span>
                                 </button>
-                                <button mat-menu-item [routerLink]="['/sup/users/' + element?.id + '/report']">
+                                <button mat-menu-item [routerLink]="['/users/' + element?.id]">
                                     <mat-icon class="icon-size-5" [svgIcon]="'heroicons_solid:trending-up'"></mat-icon>
                                     <span class="text-lg text-gray-500">កែប្រែទិន្នន័យ</span>
                                 </button>
-                                <button mat-menu-item (click)="deleteuser(element?.id)">
+                                <button mat-menu-item (click)="deleteUser(element?.id)">
                                     <mat-icon class="icon-size-5 text-red-400" svgIcon="mat_solid:delete"></mat-icon>
                                     <span class="text-lg text-gray-500">លុបទិន្នន័យ</span>
                                 </button>

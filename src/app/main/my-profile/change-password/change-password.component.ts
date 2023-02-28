@@ -70,14 +70,14 @@ export class ChangePasswordComponent implements OnInit {
         this.saving = false;
         this.changePasswordForm.enable();
         this._snackBar.openSnackBar(res.message,'');
+        // Reset the form
+        this.changePasswordNgForm.resetForm();
       },
       (err: any) => {
         this.loadingService.hide();
         this.saving = false;
         // Re-enable the form
         this.changePasswordForm.enable();
-        // Reset the form
-        this.changePasswordNgForm.resetForm();
         this._snackBar.openSnackBar(err.error.message,'error');
         this._router.navigate['-1'];
       }
