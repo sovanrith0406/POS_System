@@ -28,10 +28,10 @@ export class AuthInterceptor implements HttpInterceptor {
                 if (err instanceof HttpErrorResponse) {
                     console.log(err.url);
                     if (err.status === 401 || err.status === 403) {
-                        if (this.router.url === '/auth/sign-in') { }
+                        if (this.router.url === '/auth/login') { }
                         else {
                             localStorage.clear();
-                            this.router.navigate(['/auth/sign-in']);
+                            this.router.navigate(['/auth/login']);
                         }
                     }
                 }

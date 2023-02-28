@@ -1,0 +1,34 @@
+.container-listing-pos-section{
+    width: 100%;
+    height: calc(100dvh - 3.75rem);
+    overflow: hidden;
+    // dvh=dymaic viewport height
+    // lvh=largest viewport height
+    // svh=smallest viewport height
+    .container-listing-pos-header{
+        width: 100%;
+        min-height: 3.75rem;
+        max-height: 3.75rem;
+    }
+    .container-listing-pos-body{
+        width: 100%;
+        height: calc(100dvh - 7.5rem);
+        overflow: hidden;
+        .container-listing-pos-content{
+            width: 100%;
+            height: calc(100dvh - 8.5rem);
+            overflow: hidden;
+            .container-listing-pos-data{
+                width: 100%;
+                height: calc(100dvh - 11.25rem);
+                overflow: auto;
+                background-color: blueviolet;
+                border-radius: 0.432rem;
+                .data-scrollbar-content{
+                    width: 100%;
+                    overflow: auto;
+                }
+            }
+        }
+    }
+}

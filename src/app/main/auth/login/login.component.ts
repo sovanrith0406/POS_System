@@ -119,13 +119,18 @@ export class LoginComponent implements OnInit {
                     // Reset the form
                     this.logInNgForm.resetForm();
 
-                    let message = '';
-                    message =  err.error ? err.error.message : 'Something went worng!. Plese try again';
-                    // Set the alert
-                    this.alert = {
-                        type   : 'error',
-                        message: message + 'hello'
-                    };
+                    if(err.error.message == undefined){
+                        //for ios device
+                        this.alert = {
+                            type   : 'error',
+                            message: 'ទិន្នន័យដែលបានផ្តល់ឱ្យមិនត្រឹមត្រូវទេ។'
+                        };
+                    }else{
+                        this.alert = {
+                            type   : 'error',
+                            message: err.error ? err.error.message : 'Something went worng!. Plese try again'
+                        };
+                    }
                     
 
                     // Show the alert

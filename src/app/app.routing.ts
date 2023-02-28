@@ -7,10 +7,10 @@ import { InitialDataResolver } from 'app/app.resolvers';
 export const appRoutes: Route[] = [
 
     // Redirect empty path to '/dashboards'
-    {path: '', pathMatch : 'full', redirectTo: 'dashboard'},
+    { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
 
     // Redirect signed in user to the '/dashboards'
-    {path: 'signed-in-redirect', pathMatch : 'full', redirectTo: 'dashboard'},
+    { path: 'signed-in-redirect', pathMatch: 'full', redirectTo: 'dashboard' },
 
     // Auth routes for guests
     {
@@ -30,53 +30,58 @@ export const appRoutes: Route[] = [
 
     // Admin routes & authenticated users
     {
-        path       : '',
-        canActivate: [AuthGuard],
-        component  : LayoutComponent,
-        resolve    : {
+        path: '',
+        component: LayoutComponent,
+        resolve: {
             initialData: InitialDataResolver,
         },
-        children   : [
+        children: [
 
             // =============================>> Dashboard
             {
                 path: 'dashboard',
-                loadChildren: () => import('app/main/dashboard/dashboard.module').then(m => m.DashboardModule)
+                loadChildren: () => import('app/main/dashboard/dashboard.module').then(m => m.DashboardModule),
+                canActivate: [AuthGuard],
             },
 
             // =============================>> Pos
             {
                 path: 'pos',
-                loadChildren: () => import('app/main/pos/pos.module').then(m => m.PosModule)
+                loadChildren: () => import('app/main/pos/pos.module').then(m => m.PosModule),
+                canActivate: [AuthGuard],
             },
 
             // =============================>> Sale
             {
                 path: 'sales',
-                loadChildren: () => import('app/main/sale/sale.module').then(m => m.SaleModule)
+                loadChildren: () => import('app/main/sale/sale.module').then(m => m.SaleModule),
+                canActivate: [AuthGuard],
             },
 
             // =============================>> Product
             {
                 path: 'product',
-                loadChildren: () => import('app/main/product/product.module').then(m => m.ProductModule)
+                loadChildren: () => import('app/main/product/product.module').then(m => m.ProductModule),
+                canActivate: [AuthGuard],
             },
 
             // =============================>> User
             {
                 path: 'users',
-                loadChildren: () => import('app/main/user/user.module').then(m => m.UserModule)
+                loadChildren: () => import('app/main/user/user.module').then(m => m.UserModule),
+                canActivate: [AuthGuard],
             },
 
             // =============================>> My Profile
             {
                 path: 'my-profile',
                 loadChildren: () => import('app/main/my-profile/my-profile.module').then(m => m.MyProfileModule),
+                canActivate: [AuthGuard],
             },
 
             // 404 & Catch all
-            {path: '404-not-found', pathMatch: 'full', loadChildren: () => import('app/main/error/error-404.module').then(m => m.Error404Module)},
-            {path: '**', redirectTo: '404-not-found'}
+            { path: '404-not-found', pathMatch: 'full', loadChildren: () => import('app/main/error/error-404.module').then(m => m.Error404Module),canActivate: [AuthGuard]},
+            { path: '**', redirectTo: '404-not-found' }
         ]
     }
 ];
