@@ -114,9 +114,10 @@ export class ListingComponent implements OnInit {
   //=============================================>> Status
   onChange(status: any, id: any): any {
     const data = {
-      status: status.toString(),
+      status: status == true ? 1 : 0,
       id: id,
     };
+    console.log(data);
   }
 
   //=======================================>> On Page Changed

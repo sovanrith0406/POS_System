@@ -112,16 +112,16 @@
                             </button>
                             <mat-menu #menu="matMenu">
                                 <button mat-menu-item (click)="changePassword(element)">
-                                    <mat-icon class="icon-size-5" svgIcon="mat_solid:vpn_key"></mat-icon>
+                                    <mat-icon class="icon-size-5" svgIcon="heroicons_outline:key"></mat-icon>
                                     <span class="text-lg text-gray-500">ផ្លាស់ប្តូរពាក្យសម្ងាត់</span>
                                 </button>
                                 <button mat-menu-item [routerLink]="['/users/' + element?.id]">
-                                    <mat-icon class="icon-size-5" [svgIcon]="'heroicons_solid:trending-up'"></mat-icon>
-                                    <span class="text-lg text-gray-500">កែប្រែទិន្នន័យ</span>
+                                    <mat-icon class="icon-size-5 text-blue-500" svgIcon="heroicons_outline:eye"></mat-icon>
+                                    <span class="text-lg text-blue-500">កែប្រែទិន្នន័យ</span>
                                 </button>
                                 <button mat-menu-item (click)="deleteUser(element?.id)">
-                                    <mat-icon class="icon-size-5 text-red-400" svgIcon="mat_solid:delete"></mat-icon>
-                                    <span class="text-lg text-gray-500">លុបទិន្នន័យ</span>
+                                    <mat-icon class="icon-size-5 text-red-400" svgIcon="mat_solid:delete_outline"></mat-icon>
+                                    <span class="text-lg text-red-400">លុបទិន្នន័យ</span>
                                 </button>
                             </mat-menu>
                         </td>

@@ -1,5 +1,5 @@
 import { NavigationItem } from 'helpers/components/navigation';
-let isAdmin = false; 
+let isAdmin = false;
 if(localStorage.getItem('role') == 'Admin'){
     isAdmin = true; 
 }
@@ -33,8 +33,10 @@ export const defaultNavigation: NavigationItem[] = [
         id       : 'product',
         title    : 'ផលិតផល',
         type     : 'collapsable',
+        hidden() {
+            return !isAdmin;
+        },
         icon     : 'mat_solid:shop_two',
-        // hidden   : !isAdmin,
         children : [
             {
                 id       : 'all-product',
@@ -58,7 +60,10 @@ export const defaultNavigation: NavigationItem[] = [
         title: 'អ្នកប្រើប្រាស់',
         type : 'basic',
         icon : 'mat_outline:people',
-        link : '/users'
+        link : '/users',
+        hidden() {
+            return !isAdmin;
+        },
     },
     {
         id   : 'profile',

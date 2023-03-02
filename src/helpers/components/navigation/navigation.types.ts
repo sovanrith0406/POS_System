@@ -12,7 +12,7 @@ export interface NavigationItem
         | 'divider'
         | 'group'
         | 'spacer';
-    hidden?: boolean;
+    hidden?: (item: NavigationItem) => boolean;
     active?: boolean;
     disabled?: boolean;
     tooltip?: string;
