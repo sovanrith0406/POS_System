@@ -80,11 +80,11 @@
                             <mat-menu #menu="matMenu">
                                 <button mat-menu-item (click)="update(element)">
                                     <mat-icon class="icon-size-5 text-blue-500" svgIcon="mat_outline:edit"></mat-icon>
-                                    <span class="text-lg text-blue-500">កែប្រែទិន្នន័យ</span>
+                                    <span class="text-lg text-blue-500">កែប្រែ</span>
                                 </button>
                                 <button mat-menu-item (click)="delete(element?.id)" [disabled]="element.n_of_products > 0" [ngClass]="{'cursor-not-allowed': element.n_of_products > 0}">
                                     <mat-icon class="icon-size-5 text-red-400" [ngClass]="{'text-gray': element.n_of_products > 0}" svgIcon="mat_solid:delete_outline"></mat-icon>
-                                    <span class="text-lg text-red-400" [ngClass]="{'text-gray': element.n_of_products > 0}">លុបទិន្នន័យ</span>
+                                    <span class="text-lg text-red-400" [ngClass]="{'text-gray': element.n_of_products > 0}">លុប</span>
                                 </button>
                             </mat-menu>
                         </td>
