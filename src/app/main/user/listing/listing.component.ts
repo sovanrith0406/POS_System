@@ -5,6 +5,7 @@ import { ConfirmDialogComponent } from 'app/shared/confirm-dialog/confirm-dialog
 import { SnackbarService } from 'app/shared/services/snackbar.service';
 import { LoadingService } from 'helpers/services/loading';
 import { UserService } from '../user.service';
+import { environment as env } from 'environments/environment';
 
 @Component({
   selector: 'app-listing',
@@ -13,6 +14,7 @@ import { UserService } from '../user.service';
 })
 export class ListingComponent implements OnInit {
 
+  public fileUrl: string = env.fileUrl;
   public displayedColumns: string[] = ['no', 'name', 'type', 'phone', 'email', 'last_update', 'image', 'status', 'action'];
   public dataSource: any;
   public isSearching: boolean = true;

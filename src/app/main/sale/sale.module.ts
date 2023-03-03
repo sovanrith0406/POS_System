@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SharedModule } from 'app/shared/shared.module';
+import { ScrollbarModule } from 'helpers/directives/scrollbar';
 import { ListingComponent } from './listing/listing.component';
 
 const saleRoutes: Routes = [
@@ -11,7 +13,9 @@ const saleRoutes: Routes = [
 
 @NgModule({
     imports: [
+        SharedModule,
         RouterModule.forChild(saleRoutes),
+        ScrollbarModule
     ],
     declarations: [
         ListingComponent

@@ -1,1 +1,118 @@
-<p>listing sale works!</p>
+<div class="container-listing-pos-section">
+    <div class="container-listing-pos-header flex gap-2 justify-between items-center py-2 px-5 shadow bg-white">
+        <div class="flex flex-1 items-center font-medium">
+            <div class="flex items-center whitespace-nowrap">
+                <mat-icon class="text-gray-600 icon-size-4.5" matPrefix [svgIcon]="'heroicons_solid:home'"></mat-icon>
+            </div>
+            <div class="flex items-center ml-1 whitespace-nowrap">
+                <mat-icon class="icon-size-4.5 text-gray-600" [svgIcon]="'heroicons_solid:chevron-right'">
+                </mat-icon>
+                <span class="ml-1 text-gray-600">ការលក់</span>
+            </div>
+        </div>
+        <div class="flex items-center gap-2">
+            <div class="custom-botton-flat">
+                <button class="min-w-8 max-w-8 rounded-md bg-blue-400" mat-flat-button>
+                    <mat-icon class="icon-size-8" [svgIcon]="'heroicons_outline:plus'"></mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="container-listing-pos-body p-2">
+        <div class="container-listing-pos-content border rounded-lg">
+            <div class="container-listing-pos-data">
+                <div
+                    class="sub-header-content flex gap-3 w-full justify-between items-center px-3">
+                    <div class="flex justify-start gap-3">
+                        <div class="custom-select-header">
+                            <mat-form-field appearance="outline" class="min-w-32 max-w-32">
+                                <input matInput type="text" (keyup.enter)="listing()" [(ngModel)]="key"
+                                    placeholder="លេខវិក្កយបត្រ">
+                            </mat-form-field>
+                        </div>
+                        <div class="custom-select-header sm:flex md:hidden lg:flex">
+                            <mat-form-field appearance="outline" class="min-w-48 max-w-48">
+                                <mat-select placeholder="ស្ថានភាព" [(ngModel)]="status">
+                                    <mat-option [value]="0"> <span>ទាំងអស់</span></mat-option>
+                                    <mat-option [value]="1"> <span>ជំពាក់</span></mat-option>
+                                    <mat-option [value]="2"> <span>ទូទាត់រួច</span></mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="custom-select-header icon-date hidden md:flex">
+                            <mat-form-field appearance="outline" class="min-w-36 max-w-36">
+                                <input matInput [matDatepicker]="startdate" id="inputSearch" [(ngModel)]="form"
+                                    placeholder="ចាប់ពី">
+                                <mat-datepicker-toggle matSuffix [for]="startdate">
+                                    <mat-icon class="text-secondary" [svgIcon]="'mat_outline:today'"></mat-icon>
+                                </mat-datepicker-toggle>
+                                <mat-datepicker #startdate></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div class="custom-select-header icon-date hidden md:flex">
+                            <mat-form-field appearance="outline" class="min-w-36 max-w-36">
+                                <input matInput [matDatepicker]="enddate" id="inputSearch" [(ngModel)]="to"
+                                    placeholder="ដល់">
+                                <mat-datepicker-toggle matSuffix [for]="enddate">
+                                    <mat-icon class="text-secondary" [svgIcon]="'mat_outline:event'"></mat-icon>
+                                </mat-datepicker-toggle>
+                                <mat-datepicker #enddate></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <button mat-stroked-button class="rounded-md min-w-26 max-w-26" (click)="listing()">
+                        <mat-icon class="icon-size-5 mr-2 -ml-2" [svgIcon]="'mat_outline:search'"></mat-icon>
+                        ស្វែងរក
+                    </button>
+                </div>
+                <div class="sub-data-scrollbar bg-yellow-100" scrollbar="true">
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                    <p>content will scroll</p>
+                </div>
+            </div>
+            <div class="container-listing-pos-paginator min-h-11 max-h-11 bg-red-200">
+                paginator
+            </div>
+        </div>
+    </div>
+</div>

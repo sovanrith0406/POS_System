@@ -1,0 +1,63 @@
+.container-listing-pos-section {
+    width: 100%;
+    height: calc(100dvh - 3.75rem);
+    overflow: hidden;
+
+    .container-listing-pos-header {
+        width: 100%;
+        min-height: 3.75rem;
+        max-height: 3.75rem;
+
+        .custom-botton-flat .mat-flat-button {
+            color: #fff !important;
+        }
+    }
+
+    .container-listing-pos-body {
+        width: 100%;
+        height: calc(100dvh - 7.5rem);
+        overflow: hidden;
+
+        .container-listing-pos-content {
+            width: 100%;
+            height: calc(100dvh - 8.5rem);
+            overflow: hidden;
+
+            .container-listing-pos-data {
+                width: 100%;
+                height: calc(100dvh - 11.25rem);
+                overflow: hidden;
+                border-radius: 0.432rem;
+
+                .sub-header-content {
+                    width: 100%;
+                    min-height: 3.75rem;
+                    max-height: 3.75rem;
+                }
+
+                .sub-data-scrollbar {
+                    width: 100%;
+                    height: calc(100dvh - 15rem);
+                }
+            }
+        }
+    }
+}
+
+
+.flex-custom {
+    display: flex !important;
+}
+
+::placeholder {
+    color: rgb(100 116 139) !important;
+}
+
+::-ms-input-placeholder {
+    color: rgb(100 116 139) !important;
+}
+
+::ng-deep .icon-date .mat-form-field-appearance-outline .mat-form-field-suffix {
+    top: 0.15em !important;
+    right: -0.6rem !important;
+}
