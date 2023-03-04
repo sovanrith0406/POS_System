@@ -127,7 +127,7 @@ export class ListingComponent implements OnInit {
       this.dataSource = new MatTableDataSource(this.data);
     });
   }
-  //=======================================>> Create Product
+  //=======================================>> Delete Product
   delete(id: number = 0): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = "320px";
