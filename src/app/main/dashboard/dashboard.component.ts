@@ -11,7 +11,7 @@ import { DashboardService } from './dashboard.service';
 })
 export class DashboardComponent implements OnInit {
   public data: any;
-  public isLoading: boolean = false;
+  public loading: boolean = true;
   constructor(
     private dashboardService: DashboardService,
     private snackBar: SnackbarService,
@@ -30,14 +30,13 @@ export class DashboardComponent implements OnInit {
   //=======================================================>> Function List
   listing(): any {
     this.loadingService.show();
-    this.isLoading = true;
     this.dashboardService.getDashboardInfo().subscribe((response: any) => {
       this.loadingService.hide();
-      this.isLoading = false;
-      this.data = response;
+      this.loading = false;
+      this.data = response.total_sale_today;
     }, (err: any) => {
       this.loadingService.hide();
-      this.isLoading = false;
+      this.loading = false;
       console.log(err);
       this.snackBar.openSnackBar('Something went wrong.', 'error');
       localStorage.clear();

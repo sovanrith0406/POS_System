@@ -18,6 +18,7 @@ export class DenseLayoutComponent implements OnInit, OnDestroy
     navigation: Navigation;
     navigationAppearance: 'default' | 'dense' = 'default';
     private _unsubscribeAll: Subject<any> = new Subject<any>();
+    public role: string = '';
 
     /**
      * Constructor
@@ -51,6 +52,7 @@ export class DenseLayoutComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
+        this.role = localStorage.getItem('role');
         // Subscribe to navigation data
         this._navigationService.navigation$
             .pipe(takeUntil(this._unsubscribeAll))

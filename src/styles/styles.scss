@@ -18,3 +18,28 @@ body {
     touch-action: manipulation !important;
 }
 
+// switch
+.switch-medium {
+    background-color: #8b8b8b !important;
+    height: 18px !important;
+}
+
+.checked {
+    background-color: rgb(59 130 246) !important;
+}
+
+.switch-medium small {
+    right: calc(100% - 24px) !important;
+}
+
+.switch small {
+    width: 25px !important;
+    height: 25px !important;
+    top: -3.5px !important;
+}
+
+.switch.checked small {
+    background-color: #1470ad !important;
+    right: -1px !important;
+}
+

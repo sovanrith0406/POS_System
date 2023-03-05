@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SharedModule } from 'app/shared/shared.module';
+import { ScrollbarModule } from 'helpers/directives/scrollbar';
 import { MyProfileComponent } from './my-profile.component';
+import { OverviewComponent } from './overview/overview.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 const myProfileRoutes: Routes = [
     {
@@ -11,10 +15,14 @@ const myProfileRoutes: Routes = [
 
 @NgModule({
     imports: [
+        SharedModule,
+        ScrollbarModule,
         RouterModule.forChild(myProfileRoutes),
     ],
     declarations: [
-      MyProfileComponent
+      MyProfileComponent,
+      OverviewComponent,
+      ChangePasswordComponent
     ],
 })
 export class MyProfileModule {}
