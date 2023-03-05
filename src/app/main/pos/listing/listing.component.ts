@@ -35,6 +35,7 @@ export class ListingComponent implements OnInit {
 
   public data: any[] = [];
   public canSubmit: boolean = true;
+  public isLoading: boolean = false;
   public fileUrl = env.fileUrl;
   public discount: number = 0;
   public is_unpaid: number = 0;
@@ -51,17 +52,16 @@ export class ListingComponent implements OnInit {
   ngOnInit(): void {
     let user = JSON.parse(localStorage.getItem('user'));
     this.cashier = user.name;
-    console.log(this.cashier);
+    this.isLoading = true;
     this._posSeriice.read().subscribe((res: any) => {
+      this.isLoading = false;
       this.data = res;
-      console.log(this.data);
     });
   }
 
   // =================================  >> Add to cart
   public cart: any[] = []; // An Empty Cart. 
   addToCart(incomingItem: any, qty = 0) {
-    //console.log(incomingItem); 
     let isExisting: boolean = false;
     let item: any = {
       id: incomingItem.id,
@@ -73,7 +73,6 @@ export class ListingComponent implements OnInit {
 
     //If cart is not empty, find added item and update its new QTY. 
     if (this.cart.length > 0) {
-      //console.log('Cart is not empty.'); 
       let j = 0;
       //Loop inside the cart to find existing item; 
       this.cart.forEach(cartItem => {
@@ -92,8 +91,6 @@ export class ListingComponent implements OnInit {
     if (!isExisting) {
       this.cart.push(item);
     }
-
-    //console.log(this.cart); 
     // ===>> Refresh Total Price to display in UI
     this.getTotalPrice();
 
