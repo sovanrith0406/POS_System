@@ -14,11 +14,13 @@
     <mat-divider class="my-0"></mat-divider>
     <button mat-menu-item (click)="myProfile()">
         <mat-icon [svgIcon]="'heroicons_outline:user-circle'"></mat-icon>
-        <span>គណនី</span>
+        <!-- <span>គណនី</span> -->
+        <span *transloco="let t">{{t('profile')}}</span>
     </button>
     <mat-divider class="my-0"></mat-divider>
     <button mat-menu-item (click)="Logout()">
         <mat-icon [svgIcon]="'heroicons_outline:logout'"></mat-icon>
-        <span>ចាកចេញ</span>
+        <!-- <span>ចាកចេញ</span> -->
+        <span *transloco="let t">{{t('logout')}}</span>
     </button>
 </mat-menu>
