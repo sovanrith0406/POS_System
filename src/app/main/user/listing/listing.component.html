@@ -23,7 +23,7 @@
                 </button>
             </div>
             <div class="custom-botton-flat">
-                <button class="min-w-8 max-w-8 rounded-md bg-blue-400" mat-flat-button [routerLink]="['create']">
+                <button class="min-w-8 max-w-8 rounded-md bg-blue-400" mat-flat-button (click)="create()">
                     <mat-icon class="icon-size-8" [svgIcon]="'heroicons_outline:plus'"></mat-icon>
                 </button>
             </div>
@@ -116,11 +116,11 @@
                                     <mat-icon class="icon-size-5" svgIcon="heroicons_outline:key"></mat-icon>
                                     <span class="text-lg text-gray-500">ផ្លាស់ប្តូរពាក្យសម្ងាត់</span>
                                 </button>
-                                <button mat-menu-item [routerLink]="['/users/' + element?.id]">
+                                <button mat-menu-item (click)="update(element)">
                                     <mat-icon class="icon-size-5 text-blue-500" svgIcon="heroicons_outline:eye"></mat-icon>
                                     <span class="text-lg text-blue-500">កែប្រែទិន្នន័យ</span>
                                 </button>
-                                <button mat-menu-item (click)="deleteUser(element?.id)">
+                                <button mat-menu-item (click)="delete(element?.id)">
                                     <mat-icon class="icon-size-5 text-red-400" svgIcon="mat_solid:delete_outline"></mat-icon>
                                     <span class="text-lg text-red-400">លុបទិន្នន័យ</span>
                                 </button>

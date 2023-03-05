@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { ConfirmDialogComponent } from 'app/shared/confirm-dialog/confirm-dialog.component';
 import { SnackbarService } from 'app/shared/services/snackbar.service';
 import { LoadingService } from 'helpers/services/loading';
 import { UserService } from '../user.service';
 import { environment as env } from 'environments/environment';
+import { CreateComponent } from '../create/create.component';
+import { UpdateComponent } from '../update/update.component';
+import { ChangePasswordComponent } from '../change-password/change-password.component';
 
 @Component({
   selector: 'app-listing',
@@ -83,12 +86,31 @@ export class ListingComponent implements OnInit {
     );
   }
 
-  changePassword(row: any): void {
-    console.log(row);
+  create(): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = "650px";
+    const dialogRef = this._dialog.open(CreateComponent, dialogConfig);
   }
 
-  deleteUser(project_id: number = 0): void {
-    const dialogRef = this._dialog.open(ConfirmDialogComponent);
+  update(row: any): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = row;
+    dialogConfig.width = "650px";
+    const dialogRef = this._dialog.open(UpdateComponent, dialogConfig);
+  }
+
+  changePassword(row: any): void {
+    console.log(row);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = row;
+    dialogConfig.width = "650px";
+    const dialogRef = this._dialog.open(ChangePasswordComponent, dialogConfig);
+  }
+
+  delete(project_id: number = 0): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = "320px";
+    const dialogRef = this._dialog.open(ConfirmDialogComponent, dialogConfig);
     dialogRef.afterClosed().subscribe((result) => {
       console.log(result);
       if (result) {
