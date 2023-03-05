@@ -1,9 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import * as _moment from 'moment';
-const moment = _moment;
-
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { SaleService } from '../sale.service';
 import { SnackbarService } from 'app/shared/services/snackbar.service';
 import { LoadingService } from 'helpers/services/loading';
@@ -11,6 +6,12 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'app/shared/confirm-dialog/confirm-dialog.component';
 import { DetailsComponent } from '../details/details.component';
+
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
+import * as _moment from 'moment';
+const moment = _moment;
+
 const MY_DATE_FORMAT = {
   parse: {
     dateInput: 'DD-MMM-YYYY', // this is how your date will be parsed from Input
@@ -109,7 +110,7 @@ export class ListingComponent implements OnInit {
   view(row: any): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = row;
-    dialogConfig.width = "850px";
+    dialogConfig.width = "650px";
     const dialogRef = this._dialog.open(DetailsComponent, dialogConfig);
   }
 

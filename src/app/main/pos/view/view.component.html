@@ -5,11 +5,11 @@
 <mat-dialog-content class="custom-dialog-content hidden-sroller" scrollbar="true">
     <div class="w-full px-3 py-2 sticky left-0">
         <div class="w-full flex justify-between">
-            <p>បង្កើតនៅៈ {{getRow?.paid_at | date: 'dd-MMM-yyy hh:mm a'}}</p>
             <p>អ្នកគិតលុយៈ {{getRow?.cashier?.name}}</p>
+            <p>បង្កើតនៅៈ {{getRow?.paid_at | date: 'dd-MMM-yyy hh:mm a'}}</p>
         </div>
         <div class="w-full flex justify-between">
-            <p>ស្ថានភាពៈ​​ N/A</p>
+            <p>&nbsp;</p>
             <p>សរុបៈ {{getRow?.total_price | number}} រៀល</p>
         </div>
     </div>
@@ -53,9 +53,6 @@
 </mat-dialog-content>
 
 <mat-dialog-actions align="center" class="custom-dialog-actions">
-    <button class="min-w-8 max-w-8 rounded-md custom-button" mat-flat-button (click)="print()">
-        <mat-icon class="icon-size-6 text-white" svgIcon="heroicons_outline:printer"></mat-icon>
-    </button>
     <button class="min-w-8 max-w-8 rounded-md" mat-flat-button [mat-dialog-close]="false" color="warn">
         <mat-icon class="icon-size-6 text-white" [svgIcon]="'heroicons_solid:x'"></mat-icon>
     </button>

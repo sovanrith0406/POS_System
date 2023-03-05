@@ -1,9 +1,11 @@
-.hidden-sroller::-webkit-scrollbar{
+.hidden-sroller::-webkit-scrollbar {
     width: 0 !important;
 }
+
 .overide.custom-dialog-title {
     margin: -24px -24px 0px !important;
 }
+
 .hidden-sroller.custom-dialog-content {
     padding: 0 !important;
 }
@@ -49,14 +51,14 @@ table {
     padding: 3px 6px 3px 2rem !important;
 }
 
-.data-dialog .mat-column-qty{
+.data-dialog .mat-column-qty {
     min-width: 12rem;
     text-align: left;
     padding: 3px 2rem !important;
 }
 
 
-.data-dialog .mat-column-total{
+.data-dialog .mat-column-total {
     flex: none;
     width: 2rem;
     text-align: right !important;

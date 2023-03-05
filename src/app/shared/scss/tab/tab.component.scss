@@ -17,9 +17,9 @@
 }
 
 .mat-tab-group .mat-tab-body-content {
-    max-height: calc(100dvh - 197px);
+    height: calc(100dvh - 11.25rem);
     padding: 0;
-    overflow: auto;
+    overflow: hidden;
 }
 
 .mat-tab-labels {

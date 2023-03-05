@@ -24,7 +24,7 @@ export class PosService {
      */
     // ==================== Create One Product
     create(data: object = {}): any {
-        return this.http.post(this.url + '/products', data, this.httpOptions);
+        return this.http.post(this.url + '/pos/order', data, this.httpOptions);
     }
     // ==================== Read All Products
     read(params = {}): any {
@@ -32,7 +32,7 @@ export class PosService {
             headers: new HttpHeaders().set('Content-Type', 'application/json')
         };
         httpOptions['params'] = params;
-        return this.http.get(this.url + '/products', httpOptions);
+        return this.http.get(this.url + '/pos/products', httpOptions);
     }
     //==================================================================
 }
