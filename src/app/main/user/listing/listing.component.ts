@@ -67,7 +67,7 @@ export class ListingComponent implements OnInit {
 
     this.isSearching = true;
     this._loadingService.show();
-    this._userService.listing(param).subscribe((res: any) => {
+    this._userService.read(param).subscribe((res: any) => {
       this.isSearching = false;
       this._loadingService.hide();
       this.data = res.data;
