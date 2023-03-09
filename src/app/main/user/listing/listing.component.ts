@@ -90,6 +90,17 @@ export class ListingComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = "650px";
     const dialogRef = this._dialog.open(CreateComponent, dialogConfig);
+    dialogRef.componentInstance.CreateProject.subscribe((response: any) => {
+      let copy: any[] = [];
+      copy.push(response);
+      this.data.forEach((row: any)=>{
+        copy.push(row);
+      })
+      this.data = copy;
+      this.total += 1;
+      this.limit += 1;
+      this.dataSource = new MatTableDataSource(this.data);
+    });
   }
 
   update(row: any): void {
