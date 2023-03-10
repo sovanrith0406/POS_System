@@ -14,6 +14,11 @@ export class UserService {
 
     constructor(private http: HttpClient) {}
 
+    // ==================== Get One User
+    getUserType(): any {
+        return this.http.get(this.url + '/user/get-type', this.httpOptions);
+    }
+
    // ==================== Get All Users
    listing(params = {}): any {
         const httpOptions = {
@@ -32,6 +37,11 @@ export class UserService {
     // ==================== Create User
     create(data: any = {}): any {
         return this.http.post(this.url + '/users', data, this.httpOptions);
+    }
+
+    // =================== Update User
+    update(id: number = 0, data: object = {}): any {
+        return this.http.post(this.url + '/users/' + id, data, this.httpOptions);
     }
 
     // ==================== Update User

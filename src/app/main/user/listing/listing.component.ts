@@ -108,6 +108,18 @@ export class ListingComponent implements OnInit {
     dialogConfig.data = row;
     dialogConfig.width = "650px";
     const dialogRef = this._dialog.open(UpdateComponent, dialogConfig);
+    dialogRef.componentInstance.UpdateProject.subscribe((response: any) => {
+      let copy: any[] = [];
+      this.data.forEach((v: any) => {
+        if (v.id == response.id) {
+          copy.push(response);
+        } else {
+          copy.push(v);
+        }
+      });
+      this.data = copy;
+      this.dataSource = new MatTableDataSource(this.data);
+    });
   }
 
   changePassword(row: any): void {
