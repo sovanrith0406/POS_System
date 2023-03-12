@@ -53,10 +53,13 @@
 </mat-dialog-content>
 
 <mat-dialog-actions align="center" class="custom-dialog-actions">
-    <button class="min-w-8 max-w-8 rounded-md custom-button" mat-flat-button (click)="print()">
-        <mat-icon class="icon-size-6 text-white" svgIcon="heroicons_outline:printer"></mat-icon>
+    <button class="min-w-8 max-w-8 rounded-md custom-button" mat-flat-button [disabled]="downloading" (click)="print()">  
+        <span *ngIf="!downloading">
+            <mat-icon class="icon-size-6 text-white" svgIcon="heroicons_outline:printer"></mat-icon>
+        </span>
+        <mat-progress-spinner *ngIf="downloading" [diameter]="24" [mode]="'indeterminate'"></mat-progress-spinner>
     </button>
-    <button class="min-w-8 max-w-8 rounded-md" mat-flat-button [mat-dialog-close]="false" color="warn">
+    <button class="min-w-8 max-w-8 rounded-md" mat-flat-button [disabled]="downloading" [mat-dialog-close]="false" color="warn">
         <mat-icon class="icon-size-6 text-white" [svgIcon]="'heroicons_solid:x'"></mat-icon>
     </button>
 </mat-dialog-actions>
