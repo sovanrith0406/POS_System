@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { ConfirmDialogComponent } from 'app/shared/confirm-dialog/confirm-dialog.component';
 import { SnackbarService } from 'app/shared/services/snackbar.service';
 import { LoadingService } from 'helpers/services/loading';
 import { UserService } from '../user.service';
+import { environment as env } from 'environments/environment';
+import { CreateComponent } from '../create/create.component';
+import { UpdateComponent } from '../update/update.component';
+import { ChangePasswordComponent } from '../change-password/change-password.component';
 
 @Component({
   selector: 'app-listing',
@@ -13,6 +17,7 @@ import { UserService } from '../user.service';
 })
 export class ListingComponent implements OnInit {
 
+  public fileUrl: string = env.fileUrl;
   public displayedColumns: string[] = ['no', 'name', 'type', 'phone', 'email', 'last_update', 'image', 'status', 'action'];
   public dataSource: any;
   public isSearching: boolean = true;
@@ -81,12 +86,54 @@ export class ListingComponent implements OnInit {
     );
   }
 
-  changePassword(row: any): void {
-    console.log(row);
+  create(): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = "650px";
+    const dialogRef = this._dialog.open(CreateComponent, dialogConfig);
+    dialogRef.componentInstance.CreateProject.subscribe((response: any) => {
+      let copy: any[] = [];
+      copy.push(response);
+      this.data.forEach((row: any)=>{
+        copy.push(row);
+      })
+      this.data = copy;
+      this.total += 1;
+      this.limit += 1;
+      this.dataSource = new MatTableDataSource(this.data);
+    });
   }
 
-  deleteUser(project_id: number = 0): void {
-    const dialogRef = this._dialog.open(ConfirmDialogComponent);
+  update(row: any): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = row;
+    dialogConfig.width = "650px";
+    const dialogRef = this._dialog.open(UpdateComponent, dialogConfig);
+    dialogRef.componentInstance.UpdateProject.subscribe((response: any) => {
+      let copy: any[] = [];
+      this.data.forEach((v: any) => {
+        if (v.id == response.id) {
+          copy.push(response);
+        } else {
+          copy.push(v);
+        }
+      });
+      this.data = copy;
+      this.dataSource = new MatTableDataSource(this.data);
+    });
+  }
+
+  changePassword(row: any): void {
+    console.log(row);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = row;
+    dialogConfig.width = "650px";
+    const dialogRef = this._dialog.open(ChangePasswordComponent, dialogConfig);
+  }
+
+  delete(project_id: number = 0): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = "320px";
+    const dialogRef = this._dialog.open(ConfirmDialogComponent, dialogConfig);
     dialogRef.afterClosed().subscribe((result) => {
       console.log(result);
       if (result) {
@@ -114,9 +161,10 @@ export class ListingComponent implements OnInit {
   //=============================================>> Status
   onChange(status: any, id: any): any {
     const data = {
-      status: status.toString(),
+      status: status == true ? 1 : 0,
       id: id,
     };
+    console.log(data);
   }
 
   //=======================================>> On Page Changed

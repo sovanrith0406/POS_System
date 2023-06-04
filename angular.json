@@ -40,7 +40,8 @@
                             "crypto-js/enc-base64",
                             "flat",
                             "moment",
-                            "quill"
+                            "quill",
+                            "file-saver"
                         ],
                         "assets": [
                             "src/pos.png",

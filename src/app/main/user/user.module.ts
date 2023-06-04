@@ -4,6 +4,9 @@ import { SharedModule } from 'app/shared/shared.module';
 import { ScrollbarModule } from 'helpers/directives/scrollbar';
 import { ListingComponent } from './listing/listing.component';
 import { UiSwitchModule } from 'ngx-ui-switch';
+import { CreateComponent } from './create/create.component';
+import { UpdateComponent } from './update/update.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 const userRoutes: Routes = [
     {
@@ -20,7 +23,10 @@ const userRoutes: Routes = [
         RouterModule.forChild(userRoutes),
     ],
     declarations: [
-        ListingComponent
+        ListingComponent,
+        CreateComponent,
+        UpdateComponent,
+        ChangePasswordComponent
     ],
 })
 export class UserModule { }

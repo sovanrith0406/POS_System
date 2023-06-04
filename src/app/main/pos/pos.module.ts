@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from 'app/shared/shared.module';
 import { ScrollbarModule } from 'helpers/directives/scrollbar';
 import { ListingComponent } from './listing/listing.component';
+import { ViewComponent } from './view/view.component';
+import { ProductItemComponent } from './product-item/product-item.component';
 
 const posRoutes: Routes = [
     {
@@ -18,7 +20,9 @@ const posRoutes: Routes = [
         RouterModule.forChild(posRoutes),
     ],
     declarations: [
-        ListingComponent
+        ListingComponent,
+        ViewComponent,
+        ProductItemComponent
     ],
 })
 export class PosModule { }
