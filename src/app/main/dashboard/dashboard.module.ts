@@ -3,6 +3,7 @@ import { DashboardComponent } from './dashboard.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ScrollbarModule } from 'helpers/directives/scrollbar';
 import { SharedModule } from 'app/shared/shared.module';
+import { TranslocoModule } from '@ngneat/transloco';
 
 const dashboardRoutes: Routes = [
   {
@@ -18,7 +19,8 @@ const dashboardRoutes: Routes = [
     imports: [
       ScrollbarModule,
       SharedModule,
-      RouterModule.forChild(dashboardRoutes)
+      RouterModule.forChild(dashboardRoutes),
+      TranslocoModule
     ]
 })
 export class DashboardModule {}

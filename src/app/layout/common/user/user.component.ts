@@ -5,6 +5,7 @@ import { AuthService } from 'app/core/auth/auth.service';
 @Component({
     selector: 'user',
     templateUrl: './user.component.html',
+    styleUrls  : ['./user.component.scss'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     exportAs: 'user'
