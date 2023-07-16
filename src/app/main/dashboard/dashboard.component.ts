@@ -1,25 +1,30 @@
+
+// ==============================================>> Core Library
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+
+// ==============================================>> Custom Library
+// Shared
 import { SnackbarService } from 'app/shared/services/snackbar.service';
-import { LoadingService } from 'helpers/services/loading';
+
+// Dashboard Service
 import { DashboardService } from './dashboard.service';
 
 @Component({
+
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
+
 })
 export class DashboardComponent implements OnInit {
 
-  public totalSaleToday: number = 0;
-  public isLoading: boolean     = true;
+  public totalSaleToday: number = 0; // For Displaying Total Price.
+  public isLoading: boolean     = true; // for loading Spinner UI Status
 
   constructor(
-
-    private _dashboardService: DashboardService,
-    private _snackBar: SnackbarService,
-    // private route: Router,
-    //private loadingService: LoadingService
+    // Private Variable used in this component only
+    private _dashboardService: DashboardService, // for API calling
+    private _snackBar: SnackbarService // for Displaying Message
 
   ) { 
 
@@ -31,33 +36,33 @@ export class DashboardComponent implements OnInit {
   // -----------------------------------------------------------------------------------------------------
   ngOnInit(): void {
 
+    //===> Call API for Dashobard Data.
     this.getDashboardInfo();
 
   }
 
-  //=======================================================>> Function List
+  //=======================================================>> Function getDashobardInfo in this component
   getDashboardInfo(): any {
 
-   // this.loadingService.show();
-
+    //===> Call API for Dashobard Data in Service.
     this._dashboardService.getDashboardInfo().subscribe(( res: any) => 
     // ===================================================================>> Success: HTTP 200
     {
     
-      //this.loadingService.hide();
+      //===> Hide Loading Spinner UI
       this.isLoading = false;
 
+      //===> Update Total Price by Today.
       this.totalSaleToday = res.total_sale_today;
     
     // ===================================================================>> Not Success
     }, (err: any) => {
 
-      // this.loadingService.hide();
+      //===> Hide Loading Spinner UI
       this.isLoading = false;
 
+      //===> Display Error Message
       this._snackBar.openSnackBar('Something went wrong.', 'error');
-      // localStorage.clear();
-      // this.route.navigateByUrl('/auth/login');
 
     });
   }
