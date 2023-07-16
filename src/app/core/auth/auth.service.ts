@@ -40,26 +40,7 @@ export class AuthService
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
 
-    /**
-     * Forgot password
-     *
-     * @param email
-     */
-    forgotPassword(email: string): Observable<any>
-    {
-        return this._httpClient.post(this.url+'/auth/forgot-password', email);
-    }
-
-    /**
-     * Reset password
-     *
-     * @param password
-     */
-    resetPassword(password: string): Observable<any>
-    {
-        return this._httpClient.post(this.url+'/auth/reset-password', password);
-    }
-
+    
     /**
      * Login
      *
@@ -82,7 +63,7 @@ export class AuthService
     /**
      * Logout
     */
-    Logout(): void
+    logout(): void
     {
         // Remove the access token from the local storage
         localStorage.clear();
@@ -93,13 +74,5 @@ export class AuthService
         });
     }
 
-    /**
-     * Register
-     *
-     * @param user
-     */
-    Register(user: { name: string; email: string; password: string; company: string }): Observable<any>
-    {
-        return this._httpClient.post(this.url+'/auth/register', user);
-    }
+    
 }

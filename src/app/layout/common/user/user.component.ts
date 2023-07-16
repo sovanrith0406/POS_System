@@ -57,7 +57,7 @@ export class UserComponent implements OnInit {
     /**
      * Logout
      */
-    Logout(): void {
-        this._authService.Logout();
+    logout(): void {
+        this._authService.logout();
     }
 }
