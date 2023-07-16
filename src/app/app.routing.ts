@@ -35,6 +35,7 @@ export const appRoutes: Route[] = [
         resolve: {
             initialData: InitialDataResolver,
         },
+        canActivate: [AuthGuard],
         children: [
 
             // =============================>> Dashboard

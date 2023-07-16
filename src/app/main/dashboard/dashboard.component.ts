@@ -10,37 +10,55 @@ import { DashboardService } from './dashboard.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  public data: any;
-  public loading: boolean = true;
+
+  public totalSaleToday: number = 0;
+  public isLoading: boolean     = true;
+
   constructor(
-    private dashboardService: DashboardService,
-    private snackBar: SnackbarService,
-    private route: Router,
-    private loadingService: LoadingService
-  ) { }
+
+    private _dashboardService: DashboardService,
+    private _snackBar: SnackbarService,
+    // private route: Router,
+    //private loadingService: LoadingService
+
+  ) { 
+
+  }
 
 
   // -----------------------------------------------------------------------------------------------------
   // @ Lifecycle hooks
   // -----------------------------------------------------------------------------------------------------
   ngOnInit(): void {
-    this.listing();
+
+    this.getDashboardInfo();
+
   }
 
   //=======================================================>> Function List
-  listing(): any {
-    this.loadingService.show();
-    this.dashboardService.getDashboardInfo().subscribe((response: any) => {
-      this.loadingService.hide();
-      this.loading = false;
-      this.data = response.total_sale_today;
+  getDashboardInfo(): any {
+
+   // this.loadingService.show();
+
+    this._dashboardService.getDashboardInfo().subscribe(( res: any) => 
+    // ===================================================================>> Success: HTTP 200
+    {
+    
+      //this.loadingService.hide();
+      this.isLoading = false;
+
+      this.totalSaleToday = res.total_sale_today;
+    
+    // ===================================================================>> Not Success
     }, (err: any) => {
-      this.loadingService.hide();
-      this.loading = false;
-      console.log(err);
-      this.snackBar.openSnackBar('Something went wrong.', 'error');
-      localStorage.clear();
-      this.route.navigateByUrl('/auth/login');
+
+      // this.loadingService.hide();
+      this.isLoading = false;
+
+      this._snackBar.openSnackBar('Something went wrong.', 'error');
+      // localStorage.clear();
+      // this.route.navigateByUrl('/auth/login');
+
     });
   }
 
