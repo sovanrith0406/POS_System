@@ -65,7 +65,7 @@ export class AuthService
      *
      * @param credentials
      */
-    Login(credentials: { username: string; password: string }): Observable<any>
+    login(credentials: { username: string; password: string }): Observable<any>
     {
         return this._httpClient.post(this.url+'/auth/login', credentials).pipe(
             switchMap((response: any) => {

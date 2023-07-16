@@ -7,12 +7,20 @@ import { environment as env } from 'environments/environment';
 })
 export class DashboardService {
 
+    //===> Private Variables used in this file only
     private _apiUrl = env.apiUrl;
-    constructor(private http: HttpClient){}
+    
+    constructor(
+
+       //===> Private Variables used in this file only
+        private _http: HttpClient
+    ){
+
+    }
 
     getDashboardInfo(): any {
 
-        return this.http.get(this._apiUrl + '/dashboard', {
+        return this._http.get(this._apiUrl + '/dashboard', {
             headers: new HttpHeaders().set('Content-Type', 'application/json'),
         });
 
