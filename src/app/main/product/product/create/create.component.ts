@@ -2,8 +2,8 @@ import { Component, EventEmitter, Inject, OnInit, ViewChild } from '@angular/cor
 import { NgForm, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SnackbarService } from 'app/shared/services/snackbar.service';
-import { ProductTypeService } from '../../product-type/product-type.service';
-import { ProductsService } from '../products.service';
+import { ProductTypeService } from '../../type/product-type.service';
+import { ProductsService } from '../product.service';
 
 @Component({
   selector: 'app-create',

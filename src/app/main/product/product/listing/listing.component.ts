@@ -4,9 +4,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ConfirmDialogComponent } from 'app/shared/confirm-dialog/confirm-dialog.component';
 import { SnackbarService } from 'app/shared/services/snackbar.service';
 import { LoadingService } from 'helpers/services/loading';
-import { ProductTypeService } from '../../product-type/product-type.service';
+import { ProductTypeService } from '../../type/product-type.service';
 import { CreateComponent } from '../create/create.component';
-import { ProductsService } from '../products.service';
+import { ProductsService } from '../product.service';
 import { UpdateComponent } from '../update/update.component';
 import { environment as env } from 'environments/environment';
 
