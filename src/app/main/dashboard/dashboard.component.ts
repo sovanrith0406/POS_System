@@ -16,6 +16,7 @@ import { DashboardService } from './dashboard.service';
   styleUrls: ['./dashboard.component.scss']
 
 })
+
 export class DashboardComponent implements OnInit {
 
   // ===>> Public Variables used in the component and template.

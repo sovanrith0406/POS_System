@@ -1,7 +1,7 @@
 export const environment = {
 
     production: true,
-    apiUrl      : 'http://dev-api-pos.camcyber.come/api',
-    fileUrl     : 'http://dev-file-pos.camcyber.come/'
+    apiUrl      : 'http://prod-api-pos.camcyber.come/api',
+    fileUrl     : 'http://prod-file-pos.camcyber.come/'
 
 };
