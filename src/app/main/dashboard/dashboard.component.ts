@@ -18,11 +18,12 @@ import { DashboardService } from './dashboard.service';
 })
 export class DashboardComponent implements OnInit {
 
+  // ===>> Public Variables used in the component and template.
   public totalSaleToday: number = 0; // For Displaying Total Price.
   public isLoading: boolean     = true; // for loading Spinner UI Status
 
   constructor(
-    // Private Variable used in this component only
+    //===> Private Variables used in this component only
     private _dashboardService: DashboardService, // for API calling
     private _snackBar: SnackbarService // for Displaying Message
 
