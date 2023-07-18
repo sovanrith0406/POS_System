@@ -1,5 +1,8 @@
+// ==========================================================>> Core Library
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+// ==========================================================>> Custom Library
 import { productTypeModule } from 'app/main/product/type/product-type.module';
 import { ProductsModule } from 'app/main/product/product/product.module';
 
