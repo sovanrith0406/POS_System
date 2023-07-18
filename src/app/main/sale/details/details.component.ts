@@ -1,8 +1,14 @@
+// ==========================================================>> Core Library
 import { Component, Inject, OnInit } from '@angular/core';
+
+// ==========================================================>> Third Party Library
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+
+// ==========================================================>> Custom Library
 import { SaleService } from '../sale.service';
 import * as FileSaver from 'file-saver';
+
 
 @Component({
   selector: 'app-details',
