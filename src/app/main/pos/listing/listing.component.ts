@@ -1,13 +1,18 @@
+// ==========================================================>> Core Library
 import { Component, OnInit } from '@angular/core';
+
+// ==========================================================>> Third Party Library
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
+import * as _moment from 'moment';
+
+// ==========================================================>> Custom Library
 import { SnackbarService } from 'app/shared/services/snackbar.service';
 import { environment as env } from 'environments/environment';
 import { PosService } from '../pos.service';
 import { ViewComponent } from '../view/view.component';
 
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
-import { MomentDateAdapter } from '@angular/material-moment-adapter';
-import * as _moment from 'moment';
 const moment = _moment;
 
 const MY_DATE_FORMAT = {
