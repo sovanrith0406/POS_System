@@ -2,15 +2,15 @@
 import { Component, EventEmitter, Inject, OnInit, ViewChild } from '@angular/core';
 import { NgForm, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
+// ==========================================================>> Third Party Library
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 // ==========================================================>> Custom Library
 import { SnackbarService } from 'app/shared/services/snackbar.service';
 import { ProductTypeService } from '../../type/product-type.service';
 import { ProductsService } from '../product.service';
 import { environment as env } from 'environments/environment';
 import { LoadingService } from 'helpers/services/loading';
-
-// ==========================================================>> Third Party Library
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-update',

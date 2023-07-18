@@ -1,6 +1,10 @@
 // ==========================================================>> Core Library
 import { Component, OnInit } from '@angular/core';
 
+// ==========================================================>> Third Party Library
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
+
 // ==========================================================>> Custom Library
 import { ConfirmDialogComponent } from 'app/shared/confirm-dialog/confirm-dialog.component';
 import { SnackbarService } from 'app/shared/services/snackbar.service';
@@ -11,9 +15,6 @@ import { ProductsService } from '../product.service';
 import { UpdateComponent } from '../update/update.component';
 import { environment as env } from 'environments/environment';
 
-// ==========================================================>> Third Party Library
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-listing',

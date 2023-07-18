@@ -1,15 +1,20 @@
+// ==========================================================>> Core Library
 import { Component, OnInit } from '@angular/core';
-import { SaleService } from '../sale.service';
-import { SnackbarService } from 'app/shared/services/snackbar.service';
-import { LoadingService } from 'helpers/services/loading';
+
+// ==========================================================>> Third Party Library
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { ConfirmDialogComponent } from 'app/shared/confirm-dialog/confirm-dialog.component';
-import { DetailsComponent } from '../details/details.component';
-
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import * as _moment from 'moment';
+
+// ==========================================================>> Custom Library
+import { ConfirmDialogComponent } from 'app/shared/confirm-dialog/confirm-dialog.component';
+import { DetailsComponent } from '../details/details.component';
+import { SaleService } from '../sale.service';
+import { SnackbarService } from 'app/shared/services/snackbar.service';
+import { LoadingService } from 'helpers/services/loading';
+
 const moment = _moment;
 
 const MY_DATE_FORMAT = {
