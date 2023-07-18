@@ -14,6 +14,8 @@ import { environment as env } from 'environments/environment';
 import { CreateComponent } from '../create/create.component';
 import { UpdateComponent } from '../update/update.component';
 import { ChangePasswordComponent } from '../change-password/change-password.component';
+import { ListUsers, User } from '../user.types';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-listing',
@@ -24,9 +26,9 @@ export class ListingComponent implements OnInit {
 
   public fileUrl: string = env.fileUrl;
   public displayedColumns: string[] = ['no', 'name', 'type', 'phone', 'email', 'last_update', 'image', 'status', 'action'];
-  public dataSource: any;
+  public dataSource: MatTableDataSource<User>;
   public isSearching: boolean = true;
-  public data: any = [];
+  public data: User[];
   public total: number = 10;
   public limit: number = 10;
   public page: number = 1;
@@ -58,7 +60,7 @@ export class ListingComponent implements OnInit {
   //===================================>> List
   listing(_limit: number = 10, _page: number = 1): any {
 
-    const param: any = {
+    const param: { limit: number, page: number, key?: string | number | null } = {
       limit: _limit,
       page: _page,
     };
@@ -72,23 +74,22 @@ export class ListingComponent implements OnInit {
 
     this.isSearching = true;
     this._loadingService.show();
-    this._userService.listing(param).subscribe((res: any) => {
-      this.isSearching = false;
-      this._loadingService.hide();
-      this.data = res.data;
-      console.log(this.data);
-
-      this.dataSource = new MatTableDataSource(this.data);
-      this.total = res.total;
-      this.page = res.current_page;
-      this.limit = res.per_page;
-    }, (err: any) => {
-      this.isSearching = false;
-      this._loadingService.hide();
-      this._snackBar.openSnackBar('Something went wrong.', 'error');
-      console.log(err);
-    }
-    );
+    this._userService.listing(param).subscribe({
+      next: (response: ListUsers) => {
+        this.isSearching = false;
+        this._loadingService.hide();
+        this.data = response.data;
+        this.dataSource = new MatTableDataSource(this.data);
+        this.total = response.total;
+        this.page = response.current_page;
+        this.limit = response.per_page;
+      },
+      error: (err: HttpErrorResponse) => {
+        this.isSearching = false;
+        this._loadingService.hide();
+        this._snackBar.openSnackBar('Something went wrong.', 'error');
+      }
+    });
   }
 
   create(): void {
@@ -98,7 +99,7 @@ export class ListingComponent implements OnInit {
     dialogRef.componentInstance.CreateProject.subscribe((response: any) => {
       let copy: any[] = [];
       copy.push(response);
-      this.data.forEach((row: any)=>{
+      this.data.forEach((row: any) => {
         copy.push(row);
       })
       this.data = copy;
