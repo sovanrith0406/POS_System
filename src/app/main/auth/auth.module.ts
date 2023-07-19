@@ -1,5 +1,8 @@
+// ==========================================================>> Core Library
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+// ==========================================================>> Custom Library
 import { SharedModule } from 'app/shared/shared.module';
 import { AlertModule } from 'helpers/components/alert';
 import { LoginComponent } from './login/login.component';

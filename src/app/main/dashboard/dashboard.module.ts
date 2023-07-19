@@ -1,9 +1,15 @@
+// ==========================================================>> Core Library
 import { NgModule } from '@angular/core';
-import { DashboardComponent } from './dashboard.component';
 import { RouterModule, Routes } from '@angular/router';
+
+
+// ==========================================================>> Third Party Library
+import { TranslocoModule } from '@ngneat/transloco';
+
+// ==========================================================>> Custom Library
+import { DashboardComponent } from './dashboard.component';
 import { ScrollbarModule } from 'helpers/directives/scrollbar';
 import { SharedModule } from 'app/shared/shared.module';
-import { TranslocoModule } from '@ngneat/transloco';
 
 const dashboardRoutes: Routes = [
   {
