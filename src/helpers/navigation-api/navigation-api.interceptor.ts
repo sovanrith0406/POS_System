@@ -1,6 +1,11 @@
+// ==========================================================>> Core Library
 import { Inject, Injectable } from '@angular/core';
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
+
+// ==========================================================>> Third Party Library
 import { delay, Observable, of, switchMap, throwError } from 'rxjs';
+
+// ==========================================================>> Custom Library
 import { NAVIGATION_API_DEFAULT_DELAY } from 'helpers/navigation-api/navigation-api.constants';
 import { NavigationApiService } from 'helpers/navigation-api/navigation-api.service';
 

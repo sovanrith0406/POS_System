@@ -1,4 +1,7 @@
+// ==========================================================>> Core Library
 import { Component, OnInit } from '@angular/core';
+
+// ==========================================================>> Third Party Library
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
