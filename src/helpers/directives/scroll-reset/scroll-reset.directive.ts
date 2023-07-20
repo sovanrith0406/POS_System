@@ -1,5 +1,8 @@
+// ==========================================================>> Core Library
 import { Directive, ElementRef, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+
+// ==========================================================>> Third Party Library
 import { filter, Subject, takeUntil } from 'rxjs';
 
 @Directive({

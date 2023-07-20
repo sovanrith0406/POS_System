@@ -1,4 +1,7 @@
+// ==========================================================>> Core Library
 import { NgModule } from '@angular/core';
+
+// ==========================================================>> Custom Library
 import { MediaWatcherService } from 'helpers/services/media-watcher/media-watcher.service';
 
 @NgModule({

@@ -1,5 +1,8 @@
+// ==========================================================>> Core Library
 import { ChangeDetectionStrategy, Component, Inject, Input, OnInit, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+
+// ==========================================================>> Custom Library
 import { FSDocument, FSDocumentElement } from 'helpers/components/fullscreen/fullscreen.types';
 
 @Component({

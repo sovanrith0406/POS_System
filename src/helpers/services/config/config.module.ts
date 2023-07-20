@@ -1,4 +1,7 @@
+// ==========================================================>> Core Library
 import { ModuleWithProviders, NgModule } from '@angular/core';
+
+// ==========================================================>> Custom Library
 import { ConfigService } from 'helpers/services/config/config.service';
 import { APP_CONFIG } from 'helpers/services/config/config.constants';
 

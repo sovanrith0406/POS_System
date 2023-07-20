@@ -1,15 +1,20 @@
+// ==========================================================>> Core Library
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, HostListener, Inject, Input, OnChanges, OnDestroy, OnInit, Output, QueryList, Renderer2, SimpleChanges, ViewChild, ViewChildren, ViewEncapsulation } from '@angular/core';
 import { animate, AnimationBuilder, AnimationPlayer, style } from '@angular/animations';
 import { DOCUMENT } from '@angular/common';
 import { NavigationEnd, Router } from '@angular/router';
+
+// ==========================================================>> Third Party Library
 import { ScrollStrategy, ScrollStrategyOptions } from '@angular/cdk/overlay';
+import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { delay, filter, merge, ReplaySubject, Subject, Subscription, takeUntil } from 'rxjs';
+
+// ==========================================================>> Custom Library
 import { Animations } from 'helpers/animations';
 import { NavigationItem, NavigationAppearance, NavigationMode, NavigationPosition } from 'helpers/components/navigation/navigation.types';
 import { HelpersNavigationService } from 'helpers/components/navigation/navigation.service';
 import { ScrollbarDirective } from 'helpers/directives/scrollbar/scrollbar.directive';
 import { UtilsService } from 'helpers/services/utils/utils.service';
-import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
     selector       : 'helpers-navigation',
