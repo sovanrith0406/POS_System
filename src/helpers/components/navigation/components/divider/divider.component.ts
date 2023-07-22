@@ -1,5 +1,10 @@
+// ==========================================================>> Core Library
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
+
+// ==========================================================>> Third Party Library
 import { Subject, takeUntil } from 'rxjs';
+
+// ==========================================================>> Custom Library
 import { NavigationComponent } from 'helpers/components/navigation/navigation.component';
 import { HelpersNavigationService } from 'helpers/components/navigation/navigation.service';
 import { NavigationItem } from 'helpers/components/navigation/navigation.types';

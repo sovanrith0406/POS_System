@@ -1,5 +1,10 @@
+// ==========================================================>> Core Library
 import { HttpRequest } from '@angular/common/http';
+
+// ==========================================================>> Third Party Library
 import { Observable, of, take, throwError } from 'rxjs';
+
+// ==========================================================>> Custom Library
 import { NavigationApiReplyCallback } from 'helpers/navigation-api/navigation-api.types';
 
 export class NavigationApiHandler

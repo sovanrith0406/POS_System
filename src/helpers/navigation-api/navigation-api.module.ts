@@ -1,5 +1,8 @@
+// ==========================================================>> Core Library
 import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
+// ==========================================================>> Custom Library
 import { NAVIGATION_API_DEFAULT_DELAY } from 'helpers/navigation-api/navigation-api.constants';
 import { NavigationApiInterceptor } from 'helpers/navigation-api/navigation-api.interceptor';
 

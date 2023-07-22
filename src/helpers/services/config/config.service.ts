@@ -1,6 +1,11 @@
+// ==========================================================>> Core Library
 import { Inject, Injectable } from '@angular/core';
+
+// ==========================================================>> Third Party Library
 import { BehaviorSubject, Observable } from 'rxjs';
 import { merge } from 'lodash-es';
+
+// ==========================================================>> Custom Library
 import { APP_CONFIG } from 'helpers/services/config/config.constants';
 
 @Injectable({

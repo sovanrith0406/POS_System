@@ -1,5 +1,8 @@
+// ==========================================================>> Core Library
 import { NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
+// ==========================================================>> Custom Library
 import { LoadingInterceptor } from 'helpers/services/loading/loading.interceptor';
 
 @NgModule({

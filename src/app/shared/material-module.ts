@@ -6,7 +6,10 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
+// ==========================================================>> Core Library
 import { NgModule } from '@angular/core';
+
+// ==========================================================>> Third Party Library
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';

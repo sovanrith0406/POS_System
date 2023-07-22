@@ -1,5 +1,10 @@
+// ==========================================================>> Core Library
 import { Injectable } from '@angular/core';
+
+// ==========================================================>> Third Party Library
 import { compact, fromPairs } from 'lodash-es';
+
+// ==========================================================>> Custom Library
 import { NavigationApiHandler } from 'helpers/navigation-api/navigation-api.request-handler';
 import { NavigationApiMethods } from 'helpers/navigation-api/navigation-api.types';
 

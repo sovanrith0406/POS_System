@@ -1,4 +1,7 @@
+// ==========================================================>> Core Library
 import { HttpRequest } from '@angular/common/http';
+
+// ==========================================================>> Third Party Library
 import { Observable } from 'rxjs';
 
 export type NavigationApiReplyCallback =

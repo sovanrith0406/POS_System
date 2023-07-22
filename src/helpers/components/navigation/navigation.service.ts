@@ -1,4 +1,7 @@
+// ==========================================================>> Core Library
 import { Injectable } from '@angular/core';
+
+// ==========================================================>> Custom Library
 import { NavigationItem } from 'helpers/components/navigation/navigation.types';
 
 @Injectable({
