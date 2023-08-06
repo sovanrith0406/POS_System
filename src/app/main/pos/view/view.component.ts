@@ -22,6 +22,7 @@ export class ViewComponent implements OnInit {
   ngOnInit(): void {
     this.data = this.getRow?.details;
     this.dataSource = new MatTableDataSource(this.data);
+    console.log(this.data)
   }
 
 }

@@ -6,11 +6,15 @@ import { environment as env } from 'environments/environment';
     providedIn: 'root',
 })
 export class DashboardService {
-    url = env.apiUrl;
+
+    private _apiUrl = env.apiUrl;
     constructor(private http: HttpClient){}
+
     getDashboardInfo(): any {
-        return this.http.get(this.url + '/dashboard', {
+
+        return this.http.get(this._apiUrl + '/dashboard', {
             headers: new HttpHeaders().set('Content-Type', 'application/json'),
         });
+
     }
 }
