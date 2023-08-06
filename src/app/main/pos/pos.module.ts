@@ -5,14 +5,14 @@ import { RouterModule, Routes } from '@angular/router';
 // ==========================================================>> Custom Library
 import { SharedModule } from 'app/shared/shared.module';
 import { ScrollbarModule } from 'helpers/directives/scrollbar';
-import { ListingComponent } from './listing/listing.component';
+import { POSComponent } from './pos/pos.component';
 import { ViewComponent } from './view/view.component';
 import { ProductItemComponent } from './product-item/product-item.component';
 
 const posRoutes: Routes = [
     {
         path: '',
-        component: ListingComponent
+        component: POSComponent
     }
 ];
 
@@ -23,7 +23,7 @@ const posRoutes: Routes = [
         RouterModule.forChild(posRoutes),
     ],
     declarations: [
-        ListingComponent,
+        POSComponent,
         ViewComponent,
         ProductItemComponent
     ],

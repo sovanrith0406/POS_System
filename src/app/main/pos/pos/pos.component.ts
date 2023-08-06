@@ -29,14 +29,14 @@ const MY_DATE_FORMAT = {
 
 @Component({
   selector: 'app-listing',
-  templateUrl: './listing.component.html',
-  styleUrls: ['./listing.component.scss'],
+  templateUrl: './pos.component.html',
+  styleUrls: ['./pos.component.scss'],
   providers: [
     { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
     { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMAT }
   ],
 })
-export class ListingComponent implements OnInit {
+export class POSComponent implements OnInit {
 
   public data: any[] = [];
   public canSubmit: boolean = true;
