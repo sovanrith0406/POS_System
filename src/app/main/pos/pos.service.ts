@@ -30,7 +30,7 @@ export class PosService {
         return this.http.post(this.url + '/pos/order', data, this.httpOptions);
     }
     // ==================== Read All Products
-    read(params = {}): any {
+    getProducts(params = {}): any {
         const httpOptions = {
             headers: new HttpHeaders().set('Content-Type', 'application/json')
         };
