@@ -1,7 +1,10 @@
+// ==========================================================>> Core Library
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { productTypeModule } from 'app/main/product/product-type/product-type.module';
-import { ProductsModule } from 'app/main/product/products/products.module';
+
+// ==========================================================>> Custom Library
+import { productTypeModule } from 'app/main/product/type/product-type.module';
+import { ProductsModule } from 'app/main/product/product/product.module';
 
 const productRoutes: Routes = [
     {
@@ -9,11 +12,11 @@ const productRoutes: Routes = [
         children: [
             {
                 path: 'all',
-                loadChildren: () => import('app/main/product/products/products.module').then(m => m.ProductsModule)
+                loadChildren: () => import('app/main/product/product/product.module').then(m => m.ProductsModule)
             },
             {
                 path: 'product-types',
-                loadChildren: () => import('app/main/product/product-type/product-type.module').then(m => m.productTypeModule)
+                loadChildren: () => import('app/main/product/type/product-type.module').then(m => m.productTypeModule)
             }
         ]
     },

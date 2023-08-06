@@ -1,6 +1,11 @@
+// ==========================================================>> Core Library
 import { Injectable } from '@angular/core';
+
+// ==========================================================>> Third Party Library
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { merge } from 'lodash-es';
+
+// ==========================================================>> Custom Library
 import { ConfirmationDialogComponent } from 'helpers/services/confirmation/dialog/dialog.component';
 import { ConfirmationConfig } from 'helpers/services/confirmation/confirmation.types';
 

@@ -1,6 +1,11 @@
+// ==========================================================>> Core Library
 import { Injectable } from '@angular/core';
-import { tap, catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+// ==========================================================>> Third Party Library
+import { tap, catchError } from 'rxjs/operators';
+
+// ==========================================================>> Custom Library
 import { environment as env } from 'environments/environment';
 
 @Injectable({

@@ -1,10 +1,15 @@
+// ==========================================================>> Core Library
 import { Directive, ElementRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
+
+// ==========================================================>> Third Party Library
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Platform } from '@angular/cdk/platform';
 import { debounceTime, fromEvent, Subject, takeUntil } from 'rxjs';
 import PerfectScrollbar from 'perfect-scrollbar';
 import { merge } from 'lodash-es';
+
+// ==========================================================>> Custom Library
 import { ScrollbarGeometry, ScrollbarPosition } from 'helpers/directives/scrollbar/scrollbar.types';
 
 /**

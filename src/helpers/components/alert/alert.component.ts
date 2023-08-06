@@ -1,3 +1,4 @@
+// ==========================================================>> Core Library
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -12,8 +13,12 @@ import {
     SimpleChanges,
     ViewEncapsulation,
 } from '@angular/core';
+
+// ==========================================================>> Third Party Library
 import { filter, Subject, takeUntil } from 'rxjs';
 import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
+
+// ==========================================================>> Custom Library
 import { Animations } from 'helpers/animations';
 import {
     AlertAppearance,

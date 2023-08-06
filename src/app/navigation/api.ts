@@ -1,5 +1,10 @@
+// ==========================================================>> Core Library
 import { Injectable } from '@angular/core';
+
+// ==========================================================>> Third Party Library
 import { cloneDeep } from 'lodash-es';
+
+// ==========================================================>> Custom Library
 import { NavigationItem } from 'helpers/components/navigation';
 import { NavigationApiService } from 'helpers/navigation-api';
 import { defaultNavigation } from 'app/navigation/navigation';

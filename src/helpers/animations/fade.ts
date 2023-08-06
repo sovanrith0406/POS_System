@@ -1,4 +1,7 @@
+// ==========================================================>> Core Library
 import { animate, state, style, transition, trigger } from '@angular/animations';
+
+// ==========================================================>> Core Library
 import { AnimationCurves, AnimationDurations } from 'helpers/animations/defaults';
 
 // -----------------------------------------------------------------------------------------------------

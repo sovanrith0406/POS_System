@@ -1,10 +1,15 @@
+// ==========================================================>> Core Library
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+// ==========================================================>> Third Party Library
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+
+// ==========================================================>> Custom Library
 import { ConfirmationService } from 'helpers/services/confirmation/confirmation.service';
 import { ConfirmationDialogComponent } from 'helpers/services/confirmation/dialog/dialog.component';
-import { CommonModule } from '@angular/common';
 
 @NgModule({
     declarations: [

@@ -1,3 +1,4 @@
+// ==========================================================>> Third Party Library
 import { MatPaginatorIntl } from "@angular/material/paginator";
 
 export function CustomPaginator() {

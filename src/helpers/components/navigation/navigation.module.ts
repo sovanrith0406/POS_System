@@ -1,6 +1,9 @@
+// ==========================================================>> Core Library
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+
+// ==========================================================>> Custom Library
 import { ScrollbarModule } from 'helpers/directives/scrollbar/public-api';
 import { NavigationAsideItemComponent } from 'helpers/components/navigation/components/aside/aside.component';
 import { NavigationBasicItemComponent } from 'helpers/components/navigation/components/basic/basic.component';
