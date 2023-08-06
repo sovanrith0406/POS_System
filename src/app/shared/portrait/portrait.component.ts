@@ -1,3 +1,4 @@
+// ==========================================================>> Core Library
 import {
     Component,
     OnInit,
@@ -6,12 +7,16 @@ import {
     EventEmitter,
     Output,
 } from '@angular/core';
+
+// ==========================================================>> Third Party Library
 import {
     MatDialog,
     MatDialogRef,
     MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
+
+// ==========================================================>> Custom Library
 import { SnackbarService } from '../services/snackbar.service';
 
 @Component({

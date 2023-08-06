@@ -1,6 +1,11 @@
+// ==========================================================>> Core Library
 import { NgModule, Optional, SkipSelf } from '@angular/core';
+
+// ==========================================================>> Third Party Library
 import { MATERIAL_SANITY_CHECKS } from '@angular/material/core';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+
+// ==========================================================>> Custom Library
 import { ConfirmationModule } from 'helpers/services/confirmation';
 import { LoadingModule } from 'helpers/services/loading';
 import { MediaWatcherModule } from 'helpers/services/media-watcher/media-watcher.module';

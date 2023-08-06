@@ -1,3 +1,4 @@
+// ==========================================================>> Core Library
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 
 @Component({

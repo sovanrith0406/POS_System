@@ -1,7 +1,12 @@
+// ==========================================================>> Core Library
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, Input, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+
+// ==========================================================>> Third Party Library
 import { BooleanInput } from '@angular/cdk/coercion';
 import { filter, Subject, takeUntil } from 'rxjs';
+
+// ==========================================================>> Custom Library
 import { Animations } from 'helpers/animations';
 import { NavigationComponent } from 'helpers/components/navigation/navigation.component';
 import { HelpersNavigationService } from 'helpers/components/navigation/navigation.service';

@@ -1,6 +1,11 @@
+// ==========================================================>> Core Library
 import { Component, EventEmitter, Inject, OnInit, ViewChild } from '@angular/core';
 import { NgForm, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+
+// ==========================================================>> Third Party Library
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+// ==========================================================>> Custom Library
 import { SnackbarService } from 'app/shared/services/snackbar.service';
 import { environment as env } from 'environments/environment';
 import { UserService } from '../user.service';

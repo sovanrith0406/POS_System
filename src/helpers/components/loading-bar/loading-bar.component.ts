@@ -1,6 +1,11 @@
+// ==========================================================>> Core Library
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewEncapsulation } from '@angular/core';
+
+// ==========================================================>> Third Party Library
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Subject, takeUntil } from 'rxjs';
+
+// ==========================================================>> Custom Library
 import { LoadingService } from 'helpers/services/loading';
 
 @Component({

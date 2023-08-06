@@ -1,9 +1,12 @@
+// ==========================================================>> Core Library
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
+// ==========================================================>> Custom Library
 import { Animations } from 'helpers/animations';
 import { environment as env } from 'environments/environment';
 import { SnackbarService } from 'app/shared/services/snackbar.service';
-import { Router } from '@angular/router';
 import { MyProfileService } from '../my-profile.service';
 
 @Component({

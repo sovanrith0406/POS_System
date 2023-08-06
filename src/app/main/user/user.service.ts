@@ -1,6 +1,11 @@
+// ==========================================================>> Core Library
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+// ==========================================================>> Custom Library
 import { environment as env } from 'environments/environment';
+import { Observable } from 'rxjs';
+import { ListUsers } from './user.types';
 
 @Injectable({
     providedIn: 'root',
@@ -12,26 +17,26 @@ export class UserService {
         headers: new HttpHeaders().set('Content-Type', 'application/json'),
     };
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) { }
 
     // ==================== Get One User
     getUserType(): any {
         return this.http.get(this.url + '/user/get-type', this.httpOptions);
     }
 
-   // ==================== Get All Users
-   listing(params = {}): any {
+    // ==================== Get All Users
+    listing(params: { limit: number, page: number, key?: string | number | null }): Observable<ListUsers> {
         const httpOptions = {
             headers: new HttpHeaders().set('Content-Type', 'application/json')
         };
         httpOptions['params'] = params;
-        return this.http.get(this.url + '/users', httpOptions);
+        return this.http.get<ListUsers>(this.url + '/users', httpOptions);
     }
 
     // ==================== Get One User
     view(id: any = ''): any {
         const httpOptions = {};
-        return this.http.get(this.url + '/users/'+ id, httpOptions);
+        return this.http.get(this.url + '/users/' + id, httpOptions);
     }
 
     // ==================== Create User
@@ -46,11 +51,11 @@ export class UserService {
 
     // ==================== Update User
     delete(id: number = 0): any {
-        return this.http.delete(this.url + '/users/'+id, this.httpOptions);
+        return this.http.delete(this.url + '/users/' + id, this.httpOptions);
     }
 
     // =================== Update password
     changePassword(id: number = 0): any {
-        return this.http.post(this.url + '/users/'+id+'/change-password', this.httpOptions);
+        return this.http.post(this.url + '/users/' + id + '/change-password', this.httpOptions);
     }
 }

@@ -12,10 +12,10 @@ import { AuthService } from 'app/core/auth/auth.service';
 import { Animations } from 'helpers/animations';
 
 @Component({
-  selector      : 'app-login',
-  templateUrl   : './login.component.html',
-  styleUrls     : ['./login.component.scss'],
-  animations    : Animations
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss'],
+    animations   : Animations
 })
 
 export class LoginComponent implements OnInit {
