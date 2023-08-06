@@ -3,7 +3,7 @@ import { Component, OnInit} from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-// ==============================================>> Custom Library
+// =========================================================>> Custom Library
 // Shared
 import { SnackbarService } from 'app/shared/services/snackbar.service';
 
@@ -12,19 +12,18 @@ import { AuthService } from 'app/core/auth/auth.service';
 import { Animations } from 'helpers/animations';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
-  animations   : Animations
+  selector      : 'app-login',
+  templateUrl   : './login.component.html',
+  styleUrls     : ['./login.component.scss'],
+  animations    : Animations
 })
 
 export class LoginComponent implements OnInit {
 
-
     // ===>> Public Variables used in the component and template.
-    public logInForm: UntypedFormGroup;
-    public isShowAlert: boolean         = false;
-    public isLoading: boolean        = false;
+    public logInForm    : UntypedFormGroup;
+    public isShowAlert  : boolean            = false;
+    public isLoading    : boolean            = false;
 
     /**
      * Constructor
@@ -38,6 +37,7 @@ export class LoginComponent implements OnInit {
         private _snackBar: SnackbarService // for Displaying Message
     )
     {
+
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -75,14 +75,15 @@ export class LoginComponent implements OnInit {
                 if(res.user){
                     
                     let user = {
-                        'id' : res.user.id,
-                        'name' : res.user.name,
-                        'avatar' : res.user.avatar, 
-                        'phone' : res.user.phone
+                        'id'        : res.user.id,
+                        'name'      : res.user.name,
+                        'avatar'    : res.user.avatar, 
+                        'phone'     : res.user.phone
                     }
-                    localStorage.setItem('user',JSON.stringify(user));
 
+                    localStorage.setItem('user',JSON.stringify(user));
                     localStorage.setItem('role', res.role);
+                    
                 }
 
                 // Navigate to the dashboard
