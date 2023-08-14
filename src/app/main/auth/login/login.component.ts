@@ -78,12 +78,13 @@ export class LoginComponent implements OnInit {
                         'id'        : res.user.id,
                         'name'      : res.user.name,
                         'avatar'    : res.user.avatar, 
-                        'phone'     : res.user.phone
+                        'phone'     : res.user.phone,
+                        'email'     : res.user.email
                     }
 
                     localStorage.setItem('user',JSON.stringify(user));
                     localStorage.setItem('role', res.role);
-                    
+                    localStorage.setItem('avatar', res.user.avatar)
                 }
 
                 // Navigate to the dashboard
