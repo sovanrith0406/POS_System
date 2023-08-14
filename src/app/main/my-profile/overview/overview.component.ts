@@ -19,7 +19,6 @@ export class OverviewComponent implements OnInit {
 
   @ViewChild('myProfileNgForm') myProfileNgForm: NgForm;
 
-  UpdateProfile = new EventEmitter();
   public form: UntypedFormGroup;
 
   public url = env.apiUrl;
@@ -80,9 +79,6 @@ export class OverviewComponent implements OnInit {
       this.saving = false;
       this.form.enable();
       if (res.data) {
-        localStorage.clear();
-        // console.log(res.data);
-        this.UpdateProfile.emit(res.data)
         this.user.id = res.data.id;
         this.user.email = res.data.email;
         this.user.name = res.data.name;
