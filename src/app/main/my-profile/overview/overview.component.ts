@@ -1,5 +1,5 @@
 // ==========================================================>> Core Library
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, EventEmitter } from '@angular/core';
 import { NgForm, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -54,7 +54,7 @@ export class OverviewComponent implements OnInit {
     }
     if (this.data) {
       //this.src = this.url + this.data.avatar; //if this image is public from api
-      this.src = this.data.avatar;
+      this.src = this.file + this.data.avatar;
     }
     this._buildForm();
   }
@@ -77,10 +77,8 @@ export class OverviewComponent implements OnInit {
     this._serviceMyProfile.updateProfile(this.form.value).subscribe((res: any) => {
       // Navigate to the confirmation required page
       this.saving = false;
-      console.log(res.data);
       this.form.enable();
       if (res.data) {
-        console.log(res.data);
         this.user.id = res.data.id;
         this.user.email = res.data.email;
         this.user.name = res.data.name;
@@ -93,7 +91,8 @@ export class OverviewComponent implements OnInit {
         this.user.phone = res.data.phone;
         localStorage.setItem('user', JSON.stringify(this.user));
       }
-      this._snackBar.openSnackBar(res.message, '');
+      this._snackBar.openSnackBar(res.message, 'successful');
+
     }, () => {
       // Re-enable the form
       this.form.enable();
@@ -107,7 +106,7 @@ export class OverviewComponent implements OnInit {
   }
 
   srcChange(src: any): any {
-    this.form.get('avatar').setValue(src);
+    this.form.get('image').setValue(src);
   }
 
   private _buildForm(): any {
@@ -115,7 +114,7 @@ export class OverviewComponent implements OnInit {
       name: [this.data.name, [Validators.required]],
       phone: [this.data.phone, [Validators.required, Validators.pattern('(^[0][0-9].{7}$)|(^[0][0-9].{8}$)|(^[855][0-9].{9}$)|(^[855][0-9].{10}$)|(.+@.+..+)')]],
       email: [this.data.email, [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
-      avatar: [''],
+      image: [],
     });
   }
 

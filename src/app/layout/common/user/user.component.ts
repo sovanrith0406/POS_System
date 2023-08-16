@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'app/core/auth/auth.service';
-
+import { environment as env } from 'environments/environment';
 @Component({
     selector: 'user',
     templateUrl: './user.component.html',
@@ -12,7 +12,7 @@ import { AuthService } from 'app/core/auth/auth.service';
 })
 export class UserComponent implements OnInit {
     user: any;
-
+    public file = env.fileUrl;
     /**
      * Constructor
      */
@@ -38,6 +38,7 @@ export class UserComponent implements OnInit {
                 this._router.navigateByUrl('/auth/login');
             }
         }
+        console.log(this.user)
     }
 
 
