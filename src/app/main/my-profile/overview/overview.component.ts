@@ -8,6 +8,7 @@ import { Animations } from 'helpers/animations';
 import { environment as env } from 'environments/environment';
 import { SnackbarService } from 'app/shared/services/snackbar.service';
 import { MyProfileService } from '../my-profile.service';
+import { LoadingService } from 'helpers/services/loading';
 
 @Component({
   selector: 'app-overview',
@@ -28,6 +29,7 @@ export class OverviewComponent implements OnInit {
   public saving: boolean = false;
   public src: string = 'assets/images/avatars/profile.jpg';
   public data: any;
+  public phone: any;
   user: any = {
     id: null,
     name: null,
@@ -40,7 +42,8 @@ export class OverviewComponent implements OnInit {
     private _serviceMyProfile: MyProfileService,
     private _formBuilder: UntypedFormBuilder,
     private _snackBar: SnackbarService,
-    private _router: Router
+    private _router: Router,
+    private loadingService: LoadingService
   ) { }
 
   ngOnInit(): void {
@@ -70,15 +73,17 @@ export class OverviewComponent implements OnInit {
 
     // Disable the form
     this.form.disable();
-
+    this.loadingService.show();
     this.saving = true;
 
     // Update
     this._serviceMyProfile.updateProfile(this.form.value).subscribe((res: any) => {
       // Navigate to the confirmation required page
+    
       this.saving = false;
       this.form.enable();
-      if (res.data) {
+      this.data = localStorage.getItem('user');
+      if (res.user) {
         this.user.id = res.data.id;
         this.user.email = res.data.email;
         this.user.name = res.data.name;
@@ -91,9 +96,11 @@ export class OverviewComponent implements OnInit {
         this.user.phone = res.data.phone;
         localStorage.setItem('user', JSON.stringify(this.user));
       }
-      this._snackBar.openSnackBar(res.message, 'successful');
-
-    }, () => {
+      this._snackBar.openSnackBar(res.message,'');
+      localStorage.clear();
+      this.loadingService.hide();
+      this._router.navigateByUrl('/auth/login');
+    }, (err: any) => {
       // Re-enable the form
       this.form.enable();
 
@@ -101,6 +108,7 @@ export class OverviewComponent implements OnInit {
       this.myProfileNgForm.resetForm();
 
       this.saving = false;
+      this._snackBar.openSnackBar(err.error.message,'error');
     }
     );
   }
@@ -113,7 +121,7 @@ export class OverviewComponent implements OnInit {
     this.form = this._formBuilder.group({
       name: [this.data.name, [Validators.required]],
       phone: [this.data.phone, [Validators.required, Validators.pattern('(^[0][0-9].{7}$)|(^[0][0-9].{8}$)|(^[855][0-9].{9}$)|(^[855][0-9].{10}$)|(.+@.+..+)')]],
-      email: [this.data.email, [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+      email: [this.data.email, [Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
       image: [],
     });
   }

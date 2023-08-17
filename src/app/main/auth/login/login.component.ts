@@ -84,7 +84,8 @@ export class LoginComponent implements OnInit {
 
                     localStorage.setItem('user',JSON.stringify(user));
                     localStorage.setItem('role', res.role);
-                    localStorage.setItem('avatar', res.user.avatar)
+                    localStorage.setItem('phone', res.user.phone);
+                    localStorage.setItem('avatar', res.user.avatar);
                 }
 
                 // Navigate to the dashboard
