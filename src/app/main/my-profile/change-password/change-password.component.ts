@@ -75,6 +75,8 @@ export class ChangePasswordComponent implements OnInit {
         this._snackBar.openSnackBar(res.message,'');
         // Reset the form
         this.changePasswordNgForm.resetForm();
+        localStorage.clear();
+        this._router.navigateByUrl('/auth/login');
       },
       (err: any) => {
         this.loadingService.hide();
