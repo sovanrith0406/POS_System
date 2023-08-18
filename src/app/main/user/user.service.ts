@@ -55,7 +55,7 @@ export class UserService {
     }
 
     // =================== Update password
-    changePassword(id: number = 0): any {
-        return this.http.post(this.url + '/users/' + id + '/change-password', this.httpOptions);
+    changePassword(id: number = 0, data: object = {}): any {
+        return this.http.post(this.url + '/users/' + id + '/change-password', data, this.httpOptions);
     }
 }

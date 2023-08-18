@@ -21,6 +21,8 @@ export class DetailsComponent implements OnInit {
   public dataSource: any;
   public data: any[] = [];
   public downloading: boolean = false;
+  public status_id: number = 0;
+  public item: any[];
   constructor(
     @Inject(MAT_DIALOG_DATA) public getRow: any,
     private dialogRef: MatDialogRef<DetailsComponent>,
@@ -39,7 +41,7 @@ export class DetailsComponent implements OnInit {
     this.downloading = true;
     this._saleService.print(this.getRow.receipt_number).subscribe((res: any) => {
       this.downloading = false;
-      let blob = this.b64toBlob(res.file_base64, 'application/pdf', '');
+      let blob = this._saleService.b64toBlob(res.file_base64, 'application/pdf', '');
       FileSaver.saveAs(blob, 'Invoice-' + this.getRow.receipt_number + '.pdf');
     }, (err: any) => {
       this.downloading = false;
@@ -48,22 +50,22 @@ export class DetailsComponent implements OnInit {
   }
 
   // =================================>> Convert base64 to blob 
-  b64toBlob(b64Data: any, contentType: any, sliceSize: any) {
-    contentType = contentType || '';
-    sliceSize = sliceSize || 512;
-    var byteCharacters = atob(b64Data);
-    var byteArrays = [];
-    for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-      var slice = byteCharacters.slice(offset, offset + sliceSize);
-      var byteNumbers = new Array(slice.length);
-      for (var i = 0; i < slice.length; i++) {
-        byteNumbers[i] = slice.charCodeAt(i);
-      }
-      var byteArray = new Uint8Array(byteNumbers);
-      byteArrays.push(byteArray);
-    }
-    var blob = new Blob(byteArrays, { type: contentType });
-    return blob;
-  }
+  // b64toBlob(b64Data: any, contentType: any, sliceSize: any) {
+  //   contentType = contentType || '';
+  //   sliceSize = sliceSize || 512;
+  //   var byteCharacters = atob(b64Data);
+  //   var byteArrays = [];
+  //   for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+  //     var slice = byteCharacters.slice(offset, offset + sliceSize);
+  //     var byteNumbers = new Array(slice.length);
+  //     for (var i = 0; i < slice.length; i++) {
+  //       byteNumbers[i] = slice.charCodeAt(i);
+  //     }
+  //     var byteArray = new Uint8Array(byteNumbers);
+  //     byteArrays.push(byteArray);
+  //   }
+  //   var blob = new Blob(byteArrays, { type: contentType });
+  //   return blob;
+  // }
 
 }

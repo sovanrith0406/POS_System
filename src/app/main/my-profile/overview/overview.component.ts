@@ -30,6 +30,7 @@ export class OverviewComponent implements OnInit {
   public src: string = 'assets/images/avatars/profile.jpg';
   public data: any;
   public phone: any;
+  public title: string = 'បញ្ចូលរូបថតអ្នក'
   user: any = {
     id: null,
     name: null,

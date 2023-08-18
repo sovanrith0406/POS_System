@@ -14,6 +14,7 @@ import { DetailsComponent } from '../details/details.component';
 import { SaleService } from '../sale.service';
 import { SnackbarService } from 'app/shared/services/snackbar.service';
 import { LoadingService } from 'helpers/services/loading';
+import * as FileSaver from 'file-saver';
 
 const moment = _moment;
 
@@ -39,7 +40,7 @@ const MY_DATE_FORMAT = {
 })
 export class ListingComponent implements OnInit {
 
-  public displayedColumns: string[] = ['no', 'invoice', 'price', 'cashier', 'date', 'action'];
+  public displayedColumns: string[] = ['no', 'invoice', 'price', 'status', 'cashier', 'date', 'action'];
   public dataSource: any;
   public isLoading: boolean = true;
   public data: any = [];
@@ -50,6 +51,7 @@ export class ListingComponent implements OnInit {
   public status_id: number = 0;
   public from: any;
   public to: any;
+  public downloading: boolean = false;
   constructor(
     private _saleService: SaleService,
     private _snackBarService: SnackbarService,
@@ -146,4 +148,16 @@ export class ListingComponent implements OnInit {
     });
   }
 
+  // ========== download receipt payment ============= \\
+  print( row:any): void {
+    this.downloading = true;
+    this._saleService.print(row).subscribe((res: any) => {
+      this.downloading = false;
+      let blob = this._saleService.b64toBlob(res.file_base64, 'application/pdf', '');
+      FileSaver.saveAs(blob, 'Invoice-' + row + '.pdf');
+    }, (err: any) => {
+      this.downloading = false;
+      console.log(err);
+    });
+  }
 }

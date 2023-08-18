@@ -1,7 +1,7 @@
 <!-- Button -->
 <button mat-icon-button [matMenuTriggerFor]="userActions">
     <span class="relative">
-        <img class="w-7 h-7 rounded-full" [src]="user">
+        <img class="w-8 h-8 rounded-full" [src]="file + user.avatar">
         <mat-icon *ngIf="!user.avatar" [svgIcon]="'heroicons_outline:user-circle'"></mat-icon>
     </span>
 </button>

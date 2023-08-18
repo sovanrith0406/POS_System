@@ -114,6 +114,13 @@
                             </td>
                         </ng-container>
 
+                        <ng-container matColumnDef="status">
+                            <th mat-header-cell *matHeaderCellDef> ស្ថានភាព</th>
+                            <td mat-cell *matCellDef="let data">
+                                <span [style.color]="data?.status?.color">{{data?.status?.name}}</span>
+                            </td>
+                        </ng-container>
+
                         <ng-container matColumnDef="cashier">
                             <th mat-header-cell *matHeaderCellDef> អ្នកគិតលុយ </th>
                             <td mat-cell *matCellDef="let element"> {{element?.cashier?.name}} </td>
@@ -123,7 +130,7 @@
                             <th mat-header-cell *matHeaderCellDef>កាលបរិច្ឆេទ</th>
                             <td mat-cell *matCellDef="let data">
                                 <ng-container *ngIf="data?.updated_at">
-                                    <span>{{data?.paid_at | date: 'dd-MMM-yyy hh:mm a'}}</span>
+                                    <span>{{data?.ordered_at | date: 'dd-MMM-yyy hh:mm a'}}</span>
                                 </ng-container>
                             </td>
                         </ng-container>
@@ -139,6 +146,11 @@
                                         <mat-icon class="icon-size-5 text-blue-500"
                                             svgIcon="heroicons_outline:eye"></mat-icon>
                                         <span class="text-lg text-blue-500">មើល</span>
+                                    </button>
+                                    <button mat-menu-item (click)="print(element?.receipt_number)">
+                                        <mat-icon class="icon-size-5 text-blue-500"
+                                            svgIcon="heroicons_outline:printer"></mat-icon>
+                                        <span class="text-lg text-blue-500">ទាញយកវិក្កយបត្រ</span>
                                     </button>
                                     <button mat-menu-item (click)="delete(element?.id)">
                                         <mat-icon class="icon-size-5 text-red-400"
