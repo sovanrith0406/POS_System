@@ -51,6 +51,7 @@ export class POSComponent implements OnInit {
   public cart: any[]                = []; // An Empty Cart. 
   public isOrderBeingMade: boolean  = false;
   public totalPrice: number         = 0;
+  public status_id: number = 0;
   
   constructor(
 
@@ -128,6 +129,7 @@ export class POSComponent implements OnInit {
     this.totalPrice = total;
   }
 
+
   // ================================>> Sub value 
   blur(event: any, index: number = -1) {
 
@@ -155,7 +157,7 @@ export class POSComponent implements OnInit {
     }
 
     this.getTotalPrice();
-
+    
   }
 
   // =================================>> Remove item from Cart
@@ -177,10 +179,11 @@ export class POSComponent implements OnInit {
     this.cart.forEach(item => {
       cart[item.id] = item.qty;
     })
-
+    
     // Convert variable cart to be a json string
     let data = {
-      cart: JSON.stringify(cart)
+      cart: JSON.stringify(cart),
+      status_id: this.status_id
     }
 
     this.isOrderBeingMade = true; // Update spinner in UI

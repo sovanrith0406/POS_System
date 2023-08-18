@@ -1,16 +1,16 @@
 <div mat-dialog-title class="custom-dialog-title overide">
-    <span class="text-2xl font-semibold">លេខវិក្កយបត្រ #{{getRow?.receipt_number}}</span>
+    <span class="text-2xl font-semibold text-white">លេខវិក្កយបត្រ #{{getRow?.receipt_number}}</span>
 </div>
 
 <mat-dialog-content class="custom-dialog-content hidden-sroller" scrollbar="true">
     <div class="w-full px-3 py-2 sticky left-0">
         <div class="w-full flex justify-between">
-            <p>អ្នកគិតលុយៈ {{getRow?.cashier?.name}}</p>
-            <p>បង្កើតនៅៈ {{getRow?.paid_at | date: 'dd-MMM-yyy hh:mm a'}}</p>
+            <p>អ្នកគិតលុយ៖ {{getRow?.cashier?.name}}</p>
+            <p>បង្កើតនៅ៖ {{getRow?.ordered_at | date: 'dd-MMM-yyy hh:mm a'}}</p>
         </div>
         <div class="w-full flex justify-between">
-            <p>&nbsp;</p>
-            <p>សរុបៈ {{getRow?.total_price | number}} រៀល</p>
+            <p>ស្ថានភាព៖ <span [style.color]="getRow?.status?.color">{{getRow?.status?.name}}</span> </p>
+            <p>សរុប៖ <span>{{getRow?.total_price | number}} រៀល</span></p>
         </div>
     </div>
     <div class="data-dialog">
