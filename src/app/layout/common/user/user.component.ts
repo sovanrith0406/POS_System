@@ -12,7 +12,7 @@ import { environment as env } from 'environments/environment';
 })
 export class UserComponent implements OnInit {
     user: any;
-    public file = env.fileUrl;
+    public file:string = env.fileUrl;
     /**
      * Constructor
      */

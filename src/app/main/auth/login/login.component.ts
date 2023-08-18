@@ -10,6 +10,7 @@ import { SnackbarService } from 'app/shared/services/snackbar.service';
 // ==========================================================>> Custom Library
 import { AuthService } from 'app/core/auth/auth.service';
 import { Animations } from 'helpers/animations';
+import { MyProfileService } from 'app/main/my-profile/my-profile.service';
 
 @Component({
     selector: 'app-login',
@@ -32,6 +33,7 @@ export class LoginComponent implements OnInit {
 
         //===> Private Variables used in this component only
         private _authService: AuthService,
+        private _myProfielService: MyProfileService,
         private _formBuilder: UntypedFormBuilder,
         private _router: Router,
         private _snackBar: SnackbarService // for Displaying Message
@@ -81,11 +83,9 @@ export class LoginComponent implements OnInit {
                         'phone'     : res.user.phone,
                         'email'     : res.user.email
                     }
-
+                    //this._myProfielService.user = user;
                     localStorage.setItem('user',JSON.stringify(user));
                     localStorage.setItem('role', res.role);
-                    localStorage.setItem('phone', res.user.phone);
-                    localStorage.setItem('avatar', res.user.avatar);
                 }
 
                 // Navigate to the dashboard

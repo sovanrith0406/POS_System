@@ -5,12 +5,12 @@
 <mat-dialog-content class="custom-dialog-content hidden-sroller" scrollbar="true">
     <div class="w-full px-3 py-2 sticky left-0">
         <div class="w-full flex justify-between">
-            <p>បង្កើតនៅៈ {{getRow?.paid_at | date: 'dd-MMM-yyy hh:mm a'}}</p>
-            <p>អ្នកគិតលុយៈ {{getRow?.cashier?.name}}</p>
+            <p>បង្កើតនៅ៖ {{getRow?.ordered_at | date: 'dd-MMM-yyy hh:mm a'}}</p>
+            <p>អ្នកគិតលុយ៖ {{getRow?.cashier?.name}}</p>
         </div>
         <div class="w-full flex justify-between">
-            <p>ស្ថានភាពៈ​​ N/A</p>
-            <p>សរុបៈ {{getRow?.total_price | number}} រៀល</p>
+            <p>ស្ថានភាព៖ <span [style.color]="getRow?.status?.color">{{getRow?.status?.name}}</span></p>
+            <p>សរុប៖ {{getRow?.total_price | number}} រៀល</p>
         </div>
     </div>
     <div class="data-dialog">
@@ -49,6 +49,14 @@
             </tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
+        <div class="custom-select-header sm:flex md:hidden lg:flex">
+            <!-- <mat-form-field appearance="outline" class="min-w-48 max-w-48">
+                <mat-select placeholder="ស្ថានភាព" [(ngModel)]="status_id">
+                    <mat-option *ngFor="let item of getRow" [value]="item.status.id">
+                    <span>{{item.status.name}}</span></mat-option>
+                </mat-select>
+            </mat-form-field> -->
+        </div>
     </div>
 </mat-dialog-content>
 
