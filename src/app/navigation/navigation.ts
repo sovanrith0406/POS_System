@@ -14,7 +14,7 @@ export const defaultNavigation: NavigationItem[] = [
     //===================================>> POS
     {
         id       : 'pos',
-        title    : 'ការបញ្ជារទិញ',
+        title    : 'ការបញ្ជាទិញ',
         type     : 'basic',
         icon     : 'mat_solid:desktop_mac',
         link     : '/pos',
