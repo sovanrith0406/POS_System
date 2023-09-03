@@ -98,37 +98,37 @@
                     <table mat-table [dataSource]="dataSource">
 
                         <ng-container matColumnDef="no">
-                            <th mat-header-cell *matHeaderCellDef> ល.រ </th>
-                            <td mat-cell *matCellDef="let i=index"> {{i+1}} </td>
+                            <th mat-header-cell *matHeaderCellDef class="text-center"> ល.រ </th>
+                            <td mat-cell *matCellDef="let i=index" class="text-center"> {{i+1}} </td>
                         </ng-container>
 
                         <ng-container matColumnDef="invoice">
-                            <th mat-header-cell *matHeaderCellDef> លេខវិក្កយបត្រ </th>
-                            <td mat-cell *matCellDef="let row"> {{row?.receipt_number}} </td>
+                            <th mat-header-cell *matHeaderCellDef class="text-right"> លេខវិក្កយបត្រ </th>
+                            <td mat-cell *matCellDef="let row" class="text-right"> {{row?.receipt_number}} </td>
                         </ng-container>
 
                         <ng-container matColumnDef="price">
-                            <th mat-header-cell *matHeaderCellDef> តម្លៃ(រៀល)</th>
-                            <td mat-cell *matCellDef="let data">
+                            <th mat-header-cell *matHeaderCellDef class="text-right"> តម្លៃ(រៀល)</th>
+                            <td mat-cell *matCellDef="let data" class="text-right">
                                 {{data?.total_price | number}}
                             </td>
                         </ng-container>
 
-                        <ng-container matColumnDef="status">
+                        <!-- <ng-container matColumnDef="status">
                             <th mat-header-cell *matHeaderCellDef> ស្ថានភាព</th>
                             <td mat-cell *matCellDef="let data">
                                 <span [style.color]="data?.status?.color">{{data?.status?.name}}</span>
                             </td>
-                        </ng-container>
+                        </ng-container> -->
 
                         <ng-container matColumnDef="cashier">
-                            <th mat-header-cell *matHeaderCellDef> អ្នកគិតលុយ </th>
-                            <td mat-cell *matCellDef="let element"> {{element?.cashier?.name}} </td>
+                            <th mat-header-cell *matHeaderCellDef class="text-right"> អ្នកគិតលុយ </th>
+                            <td mat-cell *matCellDef="let element" class="text-right"> {{element?.cashier?.name}} </td>
                         </ng-container>
 
                         <ng-container matColumnDef="date">
-                            <th mat-header-cell *matHeaderCellDef>កាលបរិច្ឆេទ</th>
-                            <td mat-cell *matCellDef="let data">
+                            <th mat-header-cell *matHeaderCellDef class="text-right">កាលបរិច្ឆេទ</th>
+                            <td mat-cell *matCellDef="let data" class="text-right">
                                 <ng-container *ngIf="data?.updated_at">
                                     <span>{{data?.ordered_at | date: 'dd-MMM-yyy hh:mm a'}}</span>
                                 </ng-container>

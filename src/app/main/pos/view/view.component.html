@@ -9,38 +9,39 @@
             <p>បង្កើតនៅ៖ {{getRow?.ordered_at | date: 'dd-MMM-yyy hh:mm a'}}</p>
         </div>
         <div class="w-full flex justify-between">
-            <p>ស្ថានភាព៖ <span [style.color]="getRow?.status?.color">{{getRow?.status?.name}}</span> </p>
-            <p>សរុប៖ <span>{{getRow?.total_price | number}} រៀល</span></p>
+            <p>&nbsp;</p>
+            <!-- <p>ស្ថានភាព៖ <span [style.color]="getRow?.status?.color">{{getRow?.status?.name}}</span> </p> -->
+            <b><p>សរុប៖ {{getRow?.total_price | number}} រៀល</p></b>
         </div>
     </div>
     <div class="data-dialog">
         <table mat-table [dataSource]="dataSource">
 
             <ng-container matColumnDef="no">
-                <th mat-header-cell *matHeaderCellDef> ល.រ </th>
-                <td mat-cell *matCellDef="let i=index"> {{i+1}} </td>
+                <th mat-header-cell *matHeaderCellDef class="text-center bg-blue-200"> ល.រ </th>
+                <td mat-cell *matCellDef="let i=index" class="text-center"> {{i+1}} </td>
             </ng-container>
 
             <ng-container matColumnDef="product">
-                <th mat-header-cell *matHeaderCellDef> ផលិតផល </th>
+                <th mat-header-cell *matHeaderCellDef class=" bg-blue-200"> ផលិតផល </th>
                 <td mat-cell *matCellDef="let row"> {{row?.product?.name}} </td>
             </ng-container>
 
             <ng-container matColumnDef="price">
-                <th mat-header-cell *matHeaderCellDef> តម្លៃ(រៀល)</th>
-                <td mat-cell *matCellDef="let data">
+                <th mat-header-cell *matHeaderCellDef class="text-right bg-blue-200"> តម្លៃ (រៀល)</th>
+                <td mat-cell *matCellDef="let data" class="text-right">
                     {{data?.unit_price | number}}
                 </td>
             </ng-container>
 
             <ng-container matColumnDef="qty">
-                <th mat-header-cell *matHeaderCellDef> ចំនួន </th>
-                <td mat-cell *matCellDef="let element"> {{element?.qty}} </td>
+                <th mat-header-cell *matHeaderCellDef class="text-right bg-blue-200"> ចំនួន </th>
+                <td mat-cell *matCellDef="let element" class="text-right"> {{element?.qty}} </td>
             </ng-container>
 
             <ng-container matColumnDef="total">
-                <th mat-header-cell *matHeaderCellDef> សរុប </th>
-                <td mat-cell *matCellDef="let data">
+                <th mat-header-cell *matHeaderCellDef class="text-right bg-blue-200"> សរុប </th>
+                <td mat-cell *matCellDef="let data" class="text-right">
                     {{data?.total_price_this_product | number}}
                 </td>
             </ng-container>

@@ -57,18 +57,18 @@
                 <table mat-table [dataSource]="dataSource">
 
                     <ng-container matColumnDef="no">
-                        <th mat-header-cell *matHeaderCellDef> ល.រ </th>
-                        <td mat-cell *matCellDef="let i=index"> {{i+1}} </td>
+                        <th mat-header-cell *matHeaderCellDef class="text-center"> ល.រ </th>
+                        <td mat-cell *matCellDef="let i=index" class="text-center"> {{i+1}} </td>
                     </ng-container>
 
                     <ng-container matColumnDef="name">
                         <th mat-header-cell *matHeaderCellDef> ឈ្មោះ </th>
-                        <td mat-cell *matCellDef="let element"> {{element?.name}} </td>
+                        <td mat-cell *matCellDef="let element"> {{element?.name}}</td>
                     </ng-container>
 
                     <ng-container matColumnDef="n_of_products">
-                        <th mat-header-cell *matHeaderCellDef> ចំនួនផលិតផល </th>
-                        <td mat-cell *matCellDef="let element"> {{element?.n_of_products}} </td>
+                        <th mat-header-cell *matHeaderCellDef class="text-right"> ចំនួនផលិតផល </th>
+                        <td mat-cell *matCellDef="let element" class="text-right"> {{element?.n_of_products}} </td>
                     </ng-container>
 
                     <ng-container matColumnDef="action" stickyEnd>

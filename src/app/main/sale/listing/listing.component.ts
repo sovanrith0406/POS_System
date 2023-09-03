@@ -40,7 +40,7 @@ const MY_DATE_FORMAT = {
 })
 export class ListingComponent implements OnInit {
 
-  public displayedColumns: string[] = ['no', 'invoice', 'price', 'status', 'cashier', 'date', 'action'];
+  public displayedColumns: string[] = ['no', 'invoice', 'price', 'cashier', 'date', 'action'];
   public dataSource: any;
   public isLoading: boolean = true;
   public data: any = [];
