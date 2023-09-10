@@ -79,28 +79,24 @@ export class OverviewComponent implements OnInit {
 
     // Update
     this._serviceMyProfile.updateProfile(this.form.value).subscribe((res: any) => {
-      // Navigate to the confirmation required page
-    
-      this.saving = false;
+
       this.form.enable();
-      this.data = localStorage.getItem('user');
-      if (res.user) {
-        this.user.id = res.data.id;
-        this.user.email = res.data.email;
-        this.user.name = res.data.name;
-        this.user.avatar = res.data.avatar;
-        if (res.user.avatar == '') {
-          this.user.avatar = 'assets/images/avatars/default.jpg';
-        } else {
-          this.user.avatar = this.file + res.data.avatar;
+      this.saving = false;
+
+      if (res.data) {
+        let user = {
+          'id'        : res.data.id,
+          'name'      : res.data.name,
+          'avatar'    : res.data.avatar, 
+          'phone'     : res.data.phone,
+          'email'     : res.data.email
         }
-        this.user.phone = res.data.phone;
-        localStorage.setItem('user', JSON.stringify(this.user));
+
+        localStorage.setItem('user',JSON.stringify(user));
       }
+
       this._snackBar.openSnackBar(res.message,'');
-      localStorage.clear();
-      this.loadingService.hide();
-      this._router.navigateByUrl('/auth/login');
+
     }, (err: any) => {
       // Re-enable the form
       this.form.enable();
@@ -110,8 +106,8 @@ export class OverviewComponent implements OnInit {
 
       this.saving = false;
       this._snackBar.openSnackBar(err.error.message,'error');
-    }
-    );
+    });
+    
   }
 
   srcChange(src: any): any {
