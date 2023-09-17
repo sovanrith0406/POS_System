@@ -155,14 +155,6 @@
                     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                 </table>
             </div>
-            <div class="container-listing-user-paginator min-h-11 max-h-11"
-                [ngClass]="{'flex-custom': data?.length > 0  && !isSearching }">
-                <mat-paginator
-                    class="w-full border border-solid rounded-b-lg pt-1 bg-gray-50 dark:bg-black dark:bg-opacity-5 flex items-center justify-end overflow-hidden"
-                    [pageSizeOptions]="[10, 20, 30]" [showFirstLastButtons]="true" [length]="total" [pageSize]="limit"
-                    (page)="onPageChanged($event)">
-                </mat-paginator>
-            </div>
         </div>
     </div>
 </div>
