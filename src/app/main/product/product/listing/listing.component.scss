@@ -49,7 +49,7 @@ table {
 .container-listing-products-data .mat-header-cell {
     font-size: 1rem !important;
     padding: 0 !important;
-    color: rgb(30, 41, 59) !important;
+    color: white !important;
     z-index: 100 !important;
 }
 
@@ -75,26 +75,27 @@ table {
 }
 
 .container-listing-products-data .mat-column-image {
-    min-width: 8rem;
+    min-width: 4rem;
     text-align: left;
     padding: 3px 2rem !important;
 }
 
 .container-listing-products-data .mat-column-name {
-    min-width: 12rem;
+    min-width: 10rem;
     text-align: left;
-    padding: 3px 2rem !important;
+    padding: 3px 1rem !important;
 }
 
 .container-listing-products-data .mat-column-type {
-    min-width: 10rem;
+    min-width: 8rem;
     text-align: left;
-    padding: 3px 2rem !important;
+    padding: 3px 1rem !important;
 }
 
 .container-listing-products-data .mat-column-price {
     min-width: 10rem;
-    padding: 3px 6px 3px 2rem !important;
+    text-align: right;
+    padding: 3px 2rem 3px 2rem !important;
 }
 
 .container-listing-products-data .mat-column-date {
