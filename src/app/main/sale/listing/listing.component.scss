@@ -92,7 +92,7 @@ table {
 .sub-data-scrollbar .mat-header-cell {
     font-size: 1rem !important;
     padding: 0 !important;
-    color: rgb(30, 41, 59) !important;
+    color: white !important;
     z-index: 100 !important;
 }
 
@@ -122,6 +122,7 @@ table {
 
 .sub-data-scrollbar .mat-column-date {
     min-width: 13rem !important;
+    padding-left: 2rem !important;
 }
 
 .sub-data-scrollbar .mat-column-action {

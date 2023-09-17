@@ -96,7 +96,7 @@ export class UpdateComponent implements OnInit {
       (res: any) => {
         this.dialogRef.close();
         this.UpdateProject.emit(res.user);
-        //use snack bar to opron message
+        // use snack bar to opron message
         this.snackBar.openSnackBar(res.message, '');
       },
       (err: any) => {

@@ -1,10 +1,12 @@
-<div class="flex items-start sm:items-center mx-auto min-w-full">
+<div class="flex items-start sm:items-center mx-auto min-w-full overflow-y-hidden">
     <!-- ==============================================>> Login Form -->
-    <div class="w-full md:w-2/12 md:min-w-100">
-        <div class="max-w-120 md:max-w-90 min-h-160 sm:min-h-200 m-auto p-6 sm:h-full rounded-3xl">
-
-            <div class="text-4xl flex justify-center">
-                ចូលគណនីរបស់អ្នក
+    <div class="background w-full md:w-2/12 md:min-w-100">
+        <div class="max-w-120 md:max-w-90 min-h-full m-auto p-2 pt-18 sm:h-full rounded-3xl">
+            <div class="flex flex-col justify-center items-center">
+                <img class="flex min-w-24 max-w-24 mb-4 justify-center items-center" src="assets/images/logo/pos-none-text.png" alt="image">
+                <p class="text-4xl text-blue-800 font-bold text-center">ក្រុមអ្នកអភិវឌ្ឃ ខេមសាយប៊ើ</p>
+                <p class="text-2xl text-blue-700 font-bold text-center">CAMCYBER DEVELOPMENTS TEAM</p>
+                <p class="text-3xl text-black justify-start items-start mt-14">ចូលគណនីរបស់អ្នក</p>
             </div>
 
             <!-- Sign in form -->
@@ -18,13 +20,13 @@
 
                      <!-- Input -->
                     <input id="username" matInput [formControlName]="'username'">
-                    <mat-icon class="mr-2" matSuffix svgIcon="mat_outline:smart"></mat-icon>
+                    <mat-icon class="mr-2" matSuffix svgIcon="mat_outline:smartphone"></mat-icon>
 
                     <!-- Error -->
                     <mat-error class="min-h-6 mt-2.5 text-sm" *ngIf=" logInForm.get('username').hasError('required') ">
                         សូមបញ្ចូលលេខទូរស័ព្ទ
                     </mat-error>
-                    
+
                 </mat-form-field>
 
                 <!-- Password field -->
@@ -57,17 +59,18 @@
     </div>
 
     <!-- ==============================================>> Login Banner -->
-    <div class="relative hidden md:flex flex-auto w-10/12 h-full overflow-hidde">
+    <div class="relative hidden md:flex flex-auto w-10/12 h-full overflow-hidde justify-center items-center bg-blue-300">
         <!-- Background -->
-        <img class="image" src="assets/images/backgrounds/dark-material-bg.jpg" alt="image">
+        <img class="image min-h-[400px] h-[400px] w-[500px] min-w-[500px]"  src="assets/images/backgrounds/POS-image3D.png" alt="image">
         <!-- Content -->
         <div class="z-10 w-full custom-position">
-            <div class="flex min-w-28 max-w-28 mb-4">
+            <!-- <div class="flex min-w-28 max-w-28 mb-4">
                 <img src="assets/images/logo/pos-none-text.png" alt="image">
-            </div>
+            </div> -->
             <div class="font-bold">
-                <p class="text-5xl">ប្រព័ន្ធគ្រប់គ្រងការលក់</p>
+                <p class="text-6xl text-gray-800">ប្រព័ន្ធគ្រប់គ្រងការលក់</p>
             </div>
+            
         </div>
     </div>
 
