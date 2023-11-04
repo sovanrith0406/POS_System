@@ -62,15 +62,6 @@
                         <td mat-cell *matCellDef="let i=index" class="text-center"> {{i+1}} </td>
                     </ng-container>
 
-                    <ng-container matColumnDef="image">
-                        <th mat-header-cell *matHeaderCellDef> រូបតំណាង </th>
-                        <td mat-cell *matCellDef="let element"> 
-                            <div class="flex justify-center items-center pr-1">
-                                <img [src]="element?.image_type ? fileUrl+element?.image_type : null" style="width:35px; height: 35px;" alt="image">
-                            </div>
-                        </td>
-                    </ng-container>
-
                     <ng-container matColumnDef="name">
                         <th mat-header-cell *matHeaderCellDef> ឈ្មោះប្រភេទ </th>
                         <td mat-cell *matCellDef="let element"> {{element?.name}}</td>
