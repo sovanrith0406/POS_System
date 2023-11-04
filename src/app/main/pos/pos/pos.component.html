@@ -113,13 +113,13 @@
                             </tbody>
                         </table>
 
-                        <!-- <section class="p-2 flex justify-start border-l border-b">
+                        <section class="p-2 flex justify-start border-l border-b">
                             <label class="pl-1">ស្ថានភាព៖ </label>
                             <mat-radio-group [(ngModel)]="status_id">
-                              <mat-radio-button class="ml-2" value="1"><span style="color: #05c505;">Paid</span></mat-radio-button>
-                              <mat-radio-button class="ml-2" value="2"><span style="color: #fcfc10;">Pending</span></mat-radio-button>
+                              <mat-radio-button class="ml-2" value="1"><b style="color: #05c505;">Paid</b></mat-radio-button>
+                              <mat-radio-button class="ml-2" value="2"><b style="color: #fcfc10;">Pending</b></mat-radio-button>
                             </mat-radio-group>
-                        </section> -->
+                        </section>
                         <div class="custom-botton-flat p-2 flex justify-end border-l border-r border-b">
                             <button class="min-w-8 max-w-8 rounded-md bg-blue-400" [disabled]="!canSubmit" mat-flat-button (click)="checkOut()">
                                 <mat-spinner [diameter]=30 *ngIf="isOrderBeingMade"></mat-spinner>
