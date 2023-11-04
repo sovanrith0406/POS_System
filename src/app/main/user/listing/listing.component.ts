@@ -170,7 +170,12 @@ export class ListingComponent implements OnInit {
       status: status == true ? 1 : 0,
       id: id,
     };
-    console.log(data);
+    //console.log(data);
+    this._userService.blockUser(id).subscribe((res: any) => {
+      this._snackBar.openSnackBar(res.message, '');
+    }, (err: any) => {
+      this._snackBar.openSnackBar('Something went wrong.', 'error');
+    })
   }
 
   //=======================================>> On Page Changed

@@ -183,7 +183,7 @@ export class POSComponent implements OnInit {
     // Convert variable cart to be a json string
     let data = {
       cart: JSON.stringify(cart),
-      // status_id: this.status_id
+       status_id: this.status_id
     }
 
     this.isOrderBeingMade = true; // Update spinner in UI

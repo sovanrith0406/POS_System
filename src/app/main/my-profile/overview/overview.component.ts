@@ -74,30 +74,31 @@ export class OverviewComponent implements OnInit {
 
     // Disable the form
     this.form.disable();
-    this.loadingService.show();
+
     this.saving = true;
 
     // Update
     this._serviceMyProfile.updateProfile(this.form.value).subscribe((res: any) => {
-
-      this.form.enable();
+      // Navigate to the confirmation required page
       this.saving = false;
-
+      console.log(res.data);
+      this.form.enable();
       if (res.data) {
-        let user = {
-          'id'        : res.data.id,
-          'name'      : res.data.name,
-          'avatar'    : res.data.avatar, 
-          'phone'     : res.data.phone,
-          'email'     : res.data.email
+        console.log(res.data);
+        this.user.id = res.data.id;
+        this.user.email = res.data.email;
+        this.user.name = res.data.name;
+        this.user.avatar = res.data.avatar;
+        if (res.data.avatar == '') {
+          this.user.avatar = 'assets/images/avatars/default.jpg';
+        } else {
+          this.data.avatar = this.file + res.data.avatar;
         }
-
-        localStorage.setItem('user',JSON.stringify(user));
+        this.user.phone = res.data.phone;
+        localStorage.setItem('user', JSON.stringify(this.user));
       }
-
-      this._snackBar.openSnackBar(res.message,'');
-
-    }, (err: any) => {
+      this._snackBar.openSnackBar(res.message, '');
+    }, () => {
       // Re-enable the form
       this.form.enable();
 
@@ -105,13 +106,12 @@ export class OverviewComponent implements OnInit {
       this.myProfileNgForm.resetForm();
 
       this.saving = false;
-      this._snackBar.openSnackBar(err.error.message,'error');
-    });
-    
+    }
+    );
   }
 
   srcChange(src: any): any {
-    this.form.get('image').setValue(src);
+    this.form.get('avatar').setValue(src);
   }
 
   private _buildForm(): any {
@@ -119,7 +119,7 @@ export class OverviewComponent implements OnInit {
       name: [this.data.name, [Validators.required]],
       phone: [this.data.phone, [Validators.required, Validators.pattern('(^[0][0-9].{7}$)|(^[0][0-9].{8}$)|(^[855][0-9].{9}$)|(^[855][0-9].{10}$)|(.+@.+..+)')]],
       email: [this.data.email, [Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
-      image: [],
+      avatar: [this.data.avatar],
     });
   }
 
