@@ -15,7 +15,7 @@ export const appRoutes: Route[] = [
     // Redirect signed in user to the '/dashboards'
     { path: 'signed-in-redirect', pathMatch: 'full', redirectTo: 'dashboard' },
 
-    // Auth routes for guests
+    // ============================>> Auth routes for guests
     {
         path: '',
         canActivate: [NoAuthGuard],
@@ -31,7 +31,7 @@ export const appRoutes: Route[] = [
         ]
     },
 
-    // Admin routes & authenticated users
+    // ============================>> Admin routes & authenticated users
     {
         path: '',
         component: LayoutComponent,

@@ -6,7 +6,8 @@
                 <img class="flex min-w-24 max-w-24 mb-4 justify-center items-center" src="assets/images/logo/pos-none-text.png" alt="image">
                 <p class="text-4xl text-blue-800 font-bold text-center">ប្រព័ន្ធគ្រប់គ្រងការលក់</p>
                 <p class="text-2xl text-blue-700 font-bold text-center">POS Management System</p>
-                <p class="text-3xl text-black justify-start items-start mt-14">ចូលគណនីរបស់អ្នក</p>
+
+                <p class="text-3xl text-black justify-start items-start mt-14">ចូលគណនីរបស់អ្នក X</p>
             </div>
 
             <!-- Sign in form -->
@@ -14,17 +15,17 @@
 
                 <!-- Username field -->
                 <mat-form-field appearance="outline" class="w-full mb-6">
-                    
+
                      <!-- Label -->
-                    <mat-label>លេខទូរស័ព្ទ</mat-label>
+                    <mat-label>លេខEmail</mat-label>
 
                      <!-- Input -->
                     <input id="username" matInput [formControlName]="'username'">
                     <mat-icon class="mr-2" matSuffix svgIcon="mat_outline:smartphone"></mat-icon>
 
                     <!-- Error -->
-                    <mat-error class="min-h-6 mt-2.5 text-sm" *ngIf=" logInForm.get('username').hasError('required') ">
-                        សូមបញ្ចូលលេខទូរស័ព្ទ
+                    <mat-error class="min-h-6 mt-2.5 text-sm" *ngIf = " logInForm.get('username').hasError('email') ">
+                        សូមបញ្ចូលEmail XXXXXXX
                     </mat-error>
 
                 </mat-form-field>
@@ -45,14 +46,21 @@
                 </mat-form-field>
 
                 <!-- Submit button -->
-                <button class="w-full mt-6 py-6 rounded-md custom-button" mat-flat-button [disabled]=" logInForm.invalid || isLoading  " (click)=" login() ">
-                    
+                <button
+
+                    class="w-full mt-6 py-6 rounded-md custom-button"
+                    mat-flat-button
+                    [disabled]=" logInForm.invalid || isLoading  "
+                    (click)=" login() "
+
+                    >
+
                     <span *ngIf=" !isLoading " class="text-lg"> ចូលប្រព័ន្ធ</span>
                     <mat-progress-spinner *ngIf=" isLoading " [diameter]="24" [mode]="'indeterminate'"></mat-progress-spinner>
-                
+
                 </button>
 
-               
+
             </form>
 
         </div>
@@ -70,7 +78,7 @@
             <!-- <div class="font-bold">
                 <p class="text-6xl text-gray-800">ប្រព័ន្ធគ្រប់គ្រងការលក់</p>
             </div> -->
-            
+
         </div>
     </div>
 

@@ -7,6 +7,7 @@ import { ExtraOptions, PreloadAllModules, RouterModule } from '@angular/router';
 // ==========================================================>> Third Party Library
 import { MarkdownModule } from 'ngx-markdown';
 import { MatPaginatorIntl } from '@angular/material/paginator';
+
 // ==========================================================>> Custom Library
 import { HelpersModule } from 'helpers';
 import { ConfigModule } from 'helpers/services/config';
