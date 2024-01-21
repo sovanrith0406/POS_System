@@ -10,13 +10,10 @@ import * as _moment from 'moment';
 
 // ==========================================================>> Custom Library
 import { ConfirmDialogComponent } from 'app/shared/confirm-dialog/confirm-dialog.component';
-import { DetailsComponent } from '../details/details.component';
+import { DetailsComponent } from '../view-detail-dialog/details.component';
 import { SaleService } from '../sale.service';
 import { SnackbarService } from 'app/shared/services/snackbar.service';
-import { LoadingService } from 'helpers/services/loading';
 import * as FileSaver from 'file-saver';
-
-const moment = _moment;
 
 const MY_DATE_FORMAT = {
   parse: {
@@ -38,24 +35,29 @@ const MY_DATE_FORMAT = {
     { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMAT }
   ],
 })
+
 export class ListingComponent implements OnInit {
 
   public displayedColumns: string[] = ['no', 'invoice', 'cashier','price', 'date', 'action'];
   public dataSource: any;
   public isLoading: boolean = true;
+
   public data: any = [];
+
+  public page: number = 1;
+  public receiptNumber: string = '';
+
+  // Pagination Data
+  public from:  any;
+  public to:    any;
   public total: number = 10;
   public limit: number = 10;
-  public page: number = 1;
-  public receipt_number: string = '';
-  public status_id: number = 0;
-  public from: any;
-  public to: any;
+
   public downloading: boolean = false;
+
   constructor(
     private _saleService: SaleService,
     private _snackBarService: SnackbarService,
-    private _loadingService: LoadingService,
     private _dialog: MatDialog
   ) { }
 
@@ -66,44 +68,60 @@ export class ListingComponent implements OnInit {
   //===================================>> List
   listing(_limit: number = 10, _page: number = 1): any {
 
+
+    // Parameter Preparation
     const param: any = {
       limit: _limit,
       page: _page,
     };
 
-    if (this.receipt_number != '') {
-      param.receipt_number = this.receipt_number;
+    // Fillter by Receipt Number
+    if (this.receiptNumber !== '') {
+      param.receipt_number = this.receiptNumber;
     }
-    if (this.status_id != 0) {
-      param.status_id = this.status_id;
+
+    // Parameter Date Range
+    if (this.from !== undefined && this.to !== undefined) {
+
+      param.from    = this.from;
+      param.to      = this.to;
+
     }
-    if (this.from != undefined && this.to != undefined) {
-      param.from = this.from;
-      param.to = this.to;
-    }
-    if (this.page != 0) {
+
+    if (this.page !== 0) {
       param.page = this.page;
     }
 
     this.isLoading = true;
-    this._loadingService.show();
-    this._saleService.read(param).subscribe((res: any) => {
-      this.isLoading = false;
-      this._loadingService.hide();
-      this.data = res.data;
-      console.log(this.data);
-      this.dataSource = new MatTableDataSource(this.data);
-      this.total = res.total;
-      this.page = res.current_page;
-      this.limit = res.per_page;
+
+    this._saleService.getData(param).subscribe((res: any) => {
+
+        // Stop Loading
+        this.isLoading        = false;
+
+        // Mapping Data
+        this.data             = res.data;
+
+        // Mapping Data Source
+        this.dataSource       = new MatTableDataSource(this.data);
+
+        // Update Pagination
+        this.total            = res.total;
+        this.page             = res.current_page;
+        this.limit            = res.per_page;
+
     }, (err: any) => {
-      this.isLoading = false;
-      this._loadingService.hide();
-      this._snackBarService.openSnackBar('Something went wrong.', 'error');
-      console.log(err);
+
+        // Stop Loading
+        this.isLoading = false;
+
+        // Display Warning Mesage
+        this._snackBarService.openSnackBar('Something went wrong.', 'error');
+
     }
     );
   }
+
   //=======================================>> On Page Changed
   onPageChanged(event: any): any {
     if (event && event.pageSize) {
@@ -117,20 +135,20 @@ export class ListingComponent implements OnInit {
   view(row: any): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = row;
-    dialogConfig.width = "650px";
+    dialogConfig.width = '650px';
     const dialogRef = this._dialog.open(DetailsComponent, dialogConfig);
   }
 
   //=======================================>> Delete Sale
   delete(id: number = 0): void {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.width = "320px";
+    dialogConfig.width = '320px';
     const dialogRef = this._dialog.open(ConfirmDialogComponent, dialogConfig);
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this._saleService.delete(id).subscribe((res: any) => {
           this._snackBarService.openSnackBar(res.message, '');
-          let copy: any[] = [];
+          const copy: any[] = [];
           this.data.forEach((obj: any) => {
             if (obj.id !== id) {
               copy.push(obj);
@@ -149,15 +167,16 @@ export class ListingComponent implements OnInit {
   }
 
   // ========== download receipt payment ============= \\
-  print( row:any): void {
+  print( row: any): void {
     this.downloading = true;
     this._saleService.print(row).subscribe((res: any) => {
       this.downloading = false;
-      let blob = this._saleService.b64toBlob(res.file_base64, 'application/pdf', '');
+      const blob = this._saleService.b64toBlob(res.file_base64, 'application/pdf', '');
       FileSaver.saveAs(blob, 'Invoice-' + row + '.pdf');
     }, (err: any) => {
       this.downloading = false;
       console.log(err);
     });
   }
+
 }

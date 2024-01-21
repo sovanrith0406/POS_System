@@ -26,7 +26,7 @@ export class SaleService {
      |
      */
     // ==================== Read All Products
-    read(params = {}): any {
+    getData(params = {}): any {
         const httpOptions = {
             headers: new HttpHeaders().set('Content-Type', 'application/json')
         };

@@ -19,10 +19,15 @@
             </div>
         </div>
     </div>
+
     <div class="container-listing-pos-body px-3 pt-3">
         <div class="container-listing-pos-content border rounded-lg">
+
             <div class="container-listing-pos-data">
+
+                <!-- ================================================================================>> Filter -->
                 <div class="sub-header-content flex gap-3 w-full justify-end items-center px-3">
+
                     <div class="flex justify-start gap-3">
                         <div class="custom-select-header icon-date hidden md:flex">
                             <mat-form-field appearance="outline" class="min-w-44 max-w-44">
@@ -36,8 +41,8 @@
                         </div>
                         <div class="custom-select-header icon-date hidden md:flex mr-2">
                             <mat-form-field appearance="outline" class="min-w-44 max-w-44">
-                                <input matInput [matDatepicker]="enddate" id="inputSearch" [(ngModel)]="to"
-                                    placeholder="ដល់">
+
+                                <input matInput [matDatepicker]="enddate" id="inputSearch" [(ngModel)]="to" placeholder="ដល់">
                                 <mat-datepicker-toggle matSuffix [for]="enddate">
                                     <mat-icon class="text-secondary" [svgIcon]="'mat_outline:event'"></mat-icon>
                                 </mat-datepicker-toggle>
@@ -49,7 +54,7 @@
                     <div class="custom-botton-flat hidden sm:flex">
                         <div class="custom-select-header mr-2">
                             <mat-form-field appearance="outline" class="min-w-60 max-w-60">
-                                <input matInput type="text" (keyup.enter)="listing()" [(ngModel)]="receipt_number"
+                                <input matInput type="text" (keyup.enter)="listing()" [(ngModel)]="receiptNumber"
                                     placeholder="ស្វែងរក ( លេខវិក្កយបត្រ )">
                             </mat-form-field>
                         </div>
@@ -59,35 +64,32 @@
                     </div>
                 </div>
 
-                <ng-container *ngIf="isLoading">
+                <!-- ================================================================================>> Display Data -->
+                <!-- =================================>> Is Loading -->
+                <ng-container *ngIf=" isLoading ">
                     <div class="min-w-26 w-full flex flex-col items-center overflow-hidden min-h-30 p-2 mt-6">
                         <p class="text-xl mb-4">សូមរងចាំ! កំពុងទាញទិន្នន័យ</p>
                         <div class="lds-spinner">
                             <div></div>
                             <div></div>
                             <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
                         </div>
                     </div>
                 </ng-container>
-                <ng-container>
-                    <div *ngIf=" data?.length == 0 && !isLoading "
-                        class="flex flex-col justify-center items-center mb-4">
+
+                <!-- =================================>> No Data -->
+                <ng-container *ngIf=" data?.length == 0 && !isLoading " >
+
+                    <div class="flex flex-col justify-center items-center mb-4">
                         <mat-icon class="icon-size-24" svgIcon="toc"></mat-icon>
                         <span class="text-2xl"><span>គ្មានទិន្នន័យ</span></span>
                     </div>
+
                 </ng-container>
 
-                <div class="sub-data-scrollbar hidden" scrollbar="true"
-                    [ngClass]="{'flex-custom': data?.length > 0  && !isLoading}">
+                <!-- =================================>> Having Data -->
+                <div  class="sub-data-scrollbar hidden" scrollbar="true" [ngClass]="{'flex-custom': data?.length > 0  && !isLoading}">
+
                     <table mat-table [dataSource]="dataSource">
 
                         <ng-container matColumnDef="no">
@@ -133,7 +135,7 @@
                                             svgIcon="heroicons_outline:eye"></mat-icon>
                                         <span class="text-lg text-blue-500">មើល</span>
                                     </button>
-                                    <button mat-menu-item (click)="print(element?.receipt_number)">
+                                    <button mat-menu-item (click)="print(element?.receiptNumber)">
                                         <mat-icon class="icon-size-5 text-blue-500"
                                             svgIcon="heroicons_outline:printer"></mat-icon>
                                         <span class="text-lg text-blue-500">ទាញយកវិក្កយបត្រ</span>
@@ -151,8 +153,11 @@
                         </tr>
                         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                     </table>
+
                 </div>
+
             </div>
+
             <div class="container-listing-pos-paginator hidden min-h-11 max-h-11"
                 [ngClass]="{'flex-custom': data?.length > 0  && !isLoading }">
                 <mat-paginator

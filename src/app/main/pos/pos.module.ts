@@ -5,9 +5,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 // ==========================================================>> Custom Library
 import { SharedModule } from 'app/shared/shared.module';
 import { ScrollbarModule } from 'helpers/directives/scrollbar';
+
 import { POSComponent } from './pos/pos.component';
-import { ViewComponent } from './view/view.component';
-import { ProductItemComponent } from './product-item/product-item.component';
+import { ViewComponent } from './view-dialog/view.component';
+import { ProductItemComponent } from './product-item-selector/product-item.component';
 
 const posRoutes: Routes = [
     {

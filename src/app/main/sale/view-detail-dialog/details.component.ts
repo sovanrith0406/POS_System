@@ -21,7 +21,7 @@ export class DetailsComponent implements OnInit {
   public dataSource: any;
   public data: any[] = [];
   public downloading: boolean = false;
-  public status_id: number = 0;
+
   public item: any[];
   constructor(
     @Inject(MAT_DIALOG_DATA) public getRow: any,
@@ -41,7 +41,7 @@ export class DetailsComponent implements OnInit {
     this.downloading = true;
     this._saleService.print(this.getRow.receipt_number).subscribe((res: any) => {
       this.downloading = false;
-      let blob = this._saleService.b64toBlob(res.file_base64, 'application/pdf', '');
+      const blob = this._saleService.b64toBlob(res.file_base64, 'application/pdf', '');
       FileSaver.saveAs(blob, 'Invoice-' + this.getRow.receipt_number + '.pdf');
     }, (err: any) => {
       this.downloading = false;
@@ -49,7 +49,7 @@ export class DetailsComponent implements OnInit {
     });
   }
 
-  // =================================>> Convert base64 to blob 
+  // =================================>> Convert base64 to blob
   // b64toBlob(b64Data: any, contentType: any, sliceSize: any) {
   //   contentType = contentType || '';
   //   sliceSize = sliceSize || 512;

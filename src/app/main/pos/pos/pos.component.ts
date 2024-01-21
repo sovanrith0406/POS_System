@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
+
 import * as _moment from 'moment';
 const moment = _moment;
 
@@ -12,7 +13,7 @@ const moment = _moment;
 import { SnackbarService } from 'app/shared/services/snackbar.service';
 import { environment as env } from 'environments/environment';
 import { PosService } from '../pos.service';
-import { ViewComponent } from '../view/view.component';
+import { ViewComponent } from '../view-dialog/view.component';
 
 
 
@@ -48,11 +49,11 @@ export class POSComponent implements OnInit {
   public time: string         = '';
   public cashier: string      = '';
 
-  public cart: any[]                = []; // An Empty Cart. 
+  public cart: any[]                = []; // An Empty Cart.
   public isOrderBeingMade: boolean  = false;
   public totalPrice: number         = 0;
   public status_id: number = 0;
-  
+
   constructor(
 
     private _posService:      PosService,
@@ -91,10 +92,10 @@ export class POSComponent implements OnInit {
       unit_price: incomingItem.unit_price,
     };
 
-    //If cart is not empty, find added item and update its new QTY. 
+    //If cart is not empty, find added item and update its new QTY.
     if (this.cart.length > 0) {
       let j = 0;
-      //Loop inside the cart to find existing item; 
+      //Loop inside the cart to find existing item;
       this.cart.forEach(cartItem => {
         //Found the existing item (compared by incoming id)
         if (cartItem['id'] == incomingItem.id) {
@@ -118,7 +119,7 @@ export class POSComponent implements OnInit {
   }
 
   // ===============================>> Get total price
-  
+
   getTotalPrice() {
 
     let total = 0;
@@ -130,7 +131,7 @@ export class POSComponent implements OnInit {
   }
 
 
-  // ================================>> Sub value 
+  // ================================>> Sub value
   blur(event: any, index: number = -1) {
 
     const tempQty = this.cart[index]['qty'];
@@ -157,7 +158,7 @@ export class POSComponent implements OnInit {
     }
 
     this.getTotalPrice();
-    
+
   }
 
   // =================================>> Remove item from Cart
@@ -179,7 +180,7 @@ export class POSComponent implements OnInit {
     this.cart.forEach(item => {
       cart[item.id] = item.qty;
     })
-    
+
     // Convert variable cart to be a json string
     let data = {
       cart: JSON.stringify(cart),
@@ -194,7 +195,7 @@ export class POSComponent implements OnInit {
       (res: any) => {
 
         this.isOrderBeingMade = false;
-        
+
         this.cart = [];
         this._snackBarService.openSnackBar(res.message, '');
 
@@ -202,6 +203,7 @@ export class POSComponent implements OnInit {
         dialogConfig.data   = res.order;
         dialogConfig.width  = "650px";
         this._dialog.open(ViewComponent, dialogConfig);
+
       },
 
       //========================>> Not Success
@@ -213,5 +215,5 @@ export class POSComponent implements OnInit {
       }
     )
   }
-  
+
 }
