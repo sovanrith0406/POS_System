@@ -24,7 +24,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class ListingComponent implements OnInit {
 
-  public fileUrl: string = env.fileUrl;
+  public FILE_PUBLIC_BASE_URL: string = env.FILE_PUBLIC_BASE_URL;
   public displayedColumns: string[] = ['no', 'name', 'phone', 'status', 'last_update', 'action'];
   public dataSource: MatTableDataSource<User>;
   public isSearching: boolean = true;

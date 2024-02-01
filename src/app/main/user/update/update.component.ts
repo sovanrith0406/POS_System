@@ -17,7 +17,7 @@ import { UserService } from '../user.service';
 })
 export class UpdateComponent implements OnInit {
 
-  public fileUrl: string = env.fileUrl;
+  public FILE_PUBLIC_BASE_URL: string = env.FILE_PUBLIC_BASE_URL;
   @ViewChild('updateNgForm') updateNgForm: NgForm;
   UpdateProject = new EventEmitter();
   public saving: boolean = false;
@@ -44,7 +44,7 @@ export class UpdateComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.getRow);
-    this.src = this.fileUrl + this.getRow?.avatar;
+    this.src = this.FILE_PUBLIC_BASE_URL + this.getRow?.avatar;
     this.formBuilder();
   }
 

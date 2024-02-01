@@ -25,7 +25,7 @@ export class ListingComponent implements OnInit {
 
   public displayedColumns: string[] = ['no','code', 'image', 'name', 'type', 'price', 'date', 'action'];
   public dataSource: any;
-  public fileUrl: string = env.fileUrl;
+  public FILE_PUBLIC_BASE_URL: string = env.FILE_PUBLIC_BASE_URL;
   public isLoading: boolean = true;
   public data: any = [];
   public total: number = 10;

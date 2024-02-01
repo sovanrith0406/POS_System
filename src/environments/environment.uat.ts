@@ -1,7 +1,7 @@
 export const environment = {
 
     production: true,
-    apiUrl      : 'http://localhost:8002/api',
-    fileUrl     : 'http://localhost:8003/'
+    API_BASE_URL      : 'http://localhost:8002/api',
+    FILE_PUBLIC_BASE_URL     : 'http://localhost:8003/'
 
 };

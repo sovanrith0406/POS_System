@@ -29,7 +29,7 @@ export interface User {
 
 export class MyProfileService {
 
-    public url: string = env.apiUrl;
+    public url: string = env.API_BASE_URL;
     public httpOptions = {
         headers: new HttpHeaders().set('Content-Type', 'application/json'),
     };

@@ -44,7 +44,7 @@ export class POSComponent implements OnInit {
   public data:any[]           = [];
   public canSubmit: boolean   = true;
   public isLoading: boolean   = false;
-  public fileUrl              = env.fileUrl;
+  public FILE_PUBLIC_BASE_URL              = env.FILE_PUBLIC_BASE_URL;
 
   public time: string         = '';
   public cashier: string      = '';

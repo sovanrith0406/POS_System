@@ -13,7 +13,7 @@ export class ProductItemComponent implements OnInit {
 
   @Input() data: any = null; //Get Data from Parent
   @Output() result = new EventEmitter;  //Send data to Parent
-  public fileUrl: string = env.fileUrl;
+  public FILE_PUBLIC_BASE_URL: string = env.FILE_PUBLIC_BASE_URL;
   constructor() { }
 
   ngOnInit(): void {

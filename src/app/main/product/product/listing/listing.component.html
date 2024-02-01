@@ -94,8 +94,8 @@
 
                     <ng-container matColumnDef="image">
                         <th mat-header-cell *matHeaderCellDef> រូបភាព </th>
-                        <td mat-cell *matCellDef="let element"> 
-                            <img [src]="element?.image ? fileUrl+element?.image : null" style="width:45px; height: 45px;" alt="image">
+                        <td mat-cell *matCellDef="let element">
+                            <img [src]="element?.image ? FILE_PUBLIC_BASE_URL+element?.image : null" style="width:45px; height: 45px;" alt="image">
                         </td>
                     </ng-container>
 

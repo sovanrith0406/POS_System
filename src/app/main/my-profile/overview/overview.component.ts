@@ -22,8 +22,8 @@ export class OverviewComponent implements OnInit {
 
   public form: UntypedFormGroup;
 
-  public url = env.apiUrl;
-  public fileUrl: string = env.fileUrl;
+  public url = env.API_BASE_URL;
+  public FILE_PUBLIC_BASE_URL: string = env.FILE_PUBLIC_BASE_URL;
   public mode: any;
   public contact: any = [];
   public saving: boolean = false;
@@ -58,7 +58,7 @@ export class OverviewComponent implements OnInit {
     }
     if (this.data) {
       //this.src = this.url + this.data.avatar; //if this image is public from api
-      this.src = this.fileUrl + this.data.avatar;
+      this.src = this.FILE_PUBLIC_BASE_URL + this.data.avatar;
     }
     this._buildForm();
   }
@@ -92,7 +92,7 @@ export class OverviewComponent implements OnInit {
         if (res.data.avatar == '') {
           this.user.avatar = 'assets/images/avatars/default.jpg';
         } else {
-          this.data.avatar = this.fileUrl + res.data.avatar;
+          this.data.avatar = this.FILE_PUBLIC_BASE_URL + res.data.avatar;
         }
         this.user.phone = res.data.phone;
         localStorage.setItem('user', JSON.stringify(this.user));

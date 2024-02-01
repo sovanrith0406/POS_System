@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Injectable()
 export class AuthService
 {
-    private url = env.apiUrl;
+    private url = env.API_BASE_URL;
 
     /**
      * Constructor
@@ -40,7 +40,7 @@ export class AuthService
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
 
-    
+
     /**
      * Login
      *
@@ -74,5 +74,5 @@ export class AuthService
         });
     }
 
-    
+
 }

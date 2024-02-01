@@ -12,7 +12,7 @@ import { ListUsers } from './user.types';
 })
 export class UserService {
 
-    public url: string = env.apiUrl;
+    public url: string = env.API_BASE_URL;
     public httpOptions = {
         headers: new HttpHeaders().set('Content-Type', 'application/json'),
     };
