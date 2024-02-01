@@ -9,7 +9,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ConfirmDialogComponent } from 'app/shared/confirm-dialog/confirm-dialog.component';
 import { SnackbarService } from 'app/shared/services/snackbar.service';
 import { LoadingService } from 'helpers/services/loading';
-import { ProductTypeService } from '../../type/product-type.service';
 import { CreateComponent } from '../create/create.component';
 import { ProductsService } from '../product.service';
 import { UpdateComponent } from '../update/update.component';
@@ -35,7 +34,6 @@ export class ListingComponent implements OnInit {
   public products_type: any[][];
   public priducts_type_id: number = 0;
   constructor(
-    private _productTypeService: ProductTypeService,
     private _productService: ProductsService,
     private _snackBarService: SnackbarService,
     private _loadingService: LoadingService,
@@ -43,11 +41,8 @@ export class ListingComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this._productTypeService.read().subscribe((res: any) => {
-      this.products_type = res;
-    }, (err: any) => {
-      console.log(err);
-    });
+
+
     this.listing(this.limit, this.page);
   }
 
