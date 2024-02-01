@@ -47,41 +47,7 @@ export const appRoutes: Route[] = [
                 loadChildren: () => import('app/main/dashboard/dashboard.module').then(m => m.DashboardModule),
                 canActivate: [AuthGuard],
             },
-
-            // =============================>> Pos
-            {
-                path: 'pos',
-                loadChildren: () => import('app/main/pos/pos.module').then(m => m.PosModule),
-                canActivate: [AuthGuard],
-            },
-
-            // =============================>> Sale
-            {
-                path: 'sales',
-                loadChildren: () => import('app/main/sale/sale.module').then(m => m.SaleModule),
-                canActivate: [AuthGuard],
-            },
-
-            // =============================>> Product
-            {
-                path: 'product',
-                loadChildren: () => import('app/main/product/product.module').then(m => m.ProductModule),
-                canActivate: [AuthGuard],
-            },
-
-            // =============================>> User
-            {
-                path: 'users',
-                loadChildren: () => import('app/main/user/user.module').then(m => m.UserModule),
-                canActivate: [AuthGuard],
-            },
-
-            // =============================>> My Profile
-            {
-                path: 'my-profile',
-                loadChildren: () => import('app/main/my-profile/my-profile.module').then(m => m.MyProfileModule),
-                canActivate: [AuthGuard],
-            },
+            // >>>>>>>>>>>>>>>>> Add Ur Code Here <<<<<<<<<<<<<<<<<<<
 
             // 404 & Catch all
             { path: '404-not-found', pathMatch: 'full', loadChildren: () => import('app/main/error/error-404.module').then(m => m.Error404Module),canActivate: [AuthGuard]},
