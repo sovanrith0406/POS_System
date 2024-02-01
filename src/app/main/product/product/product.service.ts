@@ -27,7 +27,7 @@ export class ProductsService {
      */
     // ==================== Create One Product
     create(data: object = {}): any {
-        return this.http.post(this.url + '/products', data, this.httpOptions);
+        return this.http.post(this.url + '/admin/products', data, this.httpOptions);
     }
     // ==================== Read All Products
     read(params = {}): any {
@@ -35,15 +35,15 @@ export class ProductsService {
             headers: new HttpHeaders().set('Content-Type', 'application/json')
         };
         httpOptions['params'] = params;
-        return this.http.get(this.url + '/products', httpOptions);
+        return this.http.get(this.url + '/admin/products', httpOptions);
     }
     // =================== Update One Product
     update(id: number = 0, data: object = {}): any {
-        return this.http.post(this.url + '/products/' + id, data, this.httpOptions);
+        return this.http.post(this.url + '/admin/products/' + id, data, this.httpOptions);
     }
     // ==================== Delete One Product
     delete(id: number = 0): any {
-        return this.http.delete(this.url + '/products/' + id, this.httpOptions);
+        return this.http.delete(this.url + '/admin/products/' + id, this.httpOptions);
     }
     //==================================================================
 }

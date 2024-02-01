@@ -23,7 +23,7 @@ export class DashboardService {
 
     getDashboardInfo(): any {
 
-        return this._http.get(this._API_BASE_URL + '/dashboard', {
+        return this._http.get(this._API_BASE_URL + '/admin/dashboard', {
             headers: new HttpHeaders().set('Content-Type', 'application/json'),
         });
 

@@ -31,15 +31,15 @@ export class SaleService {
             headers: new HttpHeaders().set('Content-Type', 'application/json')
         };
         httpOptions['params'] = params;
-        return this.http.get(this.url + '/sales', httpOptions);
+        return this.http.get(this.url + '/admin/sales', httpOptions);
     }
     // ==================== Delete One Product
     print(receipt_number: number = 0): any {
-        return this.http.get(this.url + '/print/order-invoice/' + receipt_number, this.httpOptions);
+        return this.http.get(this.url + '/admin/print/order-invoice/' + receipt_number, this.httpOptions);
     }
     // ==================== Delete One Product
     delete(id: number = 0): any {
-        return this.http.delete(this.url + '/sales/' + id, this.httpOptions);
+        return this.http.delete(this.url + '/admin/sales/' + id, this.httpOptions);
     }
     //==================================================================
 

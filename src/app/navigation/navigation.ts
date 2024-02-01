@@ -18,7 +18,7 @@ export const defaultNavigation: NavigationItem[] = [
         type     : 'basic',
         icon     : 'mat_solid:desktop_mac',
         link     : '/pos',
-    }, 
+    },
     //===================================>> Sale
     {
         id       : 'sale',
@@ -26,13 +26,13 @@ export const defaultNavigation: NavigationItem[] = [
         type     : 'basic',
         icon     : 'mat_solid:shopping_cart',
         link     : '/sales',
-    }, 
+    },
     //===================================>> Product
     {
         hidden() {
             isAdmin = true;
             if(localStorage.getItem('role') == 'Admin'){
-                isAdmin = false; 
+                isAdmin = false;
             }
             return isAdmin;
         },
@@ -47,13 +47,6 @@ export const defaultNavigation: NavigationItem[] = [
                 type     : 'basic',
                 icon     : 'heroicons_solid:chevron-right',
                 link     : 'product/all'
-            }, 
-            {
-                id      : 'product-type',
-                title   : 'ប្រភេទផលិតផល',
-                type    : 'basic',
-                icon    : 'heroicons_solid:chevron-right',
-                link    : 'product/product-types'
             }
         ],
     },
@@ -62,7 +55,7 @@ export const defaultNavigation: NavigationItem[] = [
         hidden() {
             isAdmin = true;
             if(localStorage.getItem('role') == 'Admin'){
-                isAdmin = false; 
+                isAdmin = false;
             }
             return isAdmin;
         },

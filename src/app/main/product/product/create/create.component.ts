@@ -7,7 +7,6 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 // ==========================================================>> Custom Library
 import { SnackbarService } from 'app/shared/services/snackbar.service';
-import { ProductTypeService } from '../../type/product-type.service';
 import { ProductsService } from '../product.service';
 
 @Component({
@@ -31,15 +30,11 @@ export class CreateComponent implements OnInit {
     private dialogRef: MatDialogRef<CreateComponent>,
     private _formBuilder: UntypedFormBuilder,
     private _productsService: ProductsService,
-    private _productTypeService: ProductTypeService,
     private snackBar: SnackbarService
   ) {
+
     dialogRef.disableClose = true;
-    this._productTypeService.read().subscribe((res: any) => {
-      this.products_type = res;
-    }, (err: any) => {
-      console.log(err);
-    });
+
   }
 
   ngOnInit(): void {

@@ -190,7 +190,7 @@ export class POSComponent implements OnInit {
     this.isOrderBeingMade = true; // Update spinner in UI
     this.time             = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
 
-    this._posService.create(data).subscribe(
+    this._posService.makeOrder(data).subscribe(
       //========================>> Success
       (res: any) => {
 
