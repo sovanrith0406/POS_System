@@ -21,14 +21,14 @@ export class DashboardComponent implements OnInit {
 
   // ===>> Public Variables used in the component and template.
   public totalSaleToday: number = 0; // For Displaying Total Price.
-  public isLoading: boolean     = true; // for loading Spinner UI Status
+  public isLoading: boolean     = false; // for loading Spinner UI Status
 
   constructor(
     //===> Private Variables used in this component only
     private _dashboardService: DashboardService, // for API calling
     private _snackBar: SnackbarService // for Displaying Message
 
-  ) { 
+  ) {
 
   }
 
@@ -39,7 +39,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
 
     //===> Call API for Dashobard Data.
-    this.getDashboardInfo();
+
 
   }
 
@@ -47,16 +47,16 @@ export class DashboardComponent implements OnInit {
   getDashboardInfo(): any {
 
     //===> Call API for Dashobard Data in Service.
-    this._dashboardService.getDashboardInfo().subscribe(( res: any) => 
+    this._dashboardService.getDashboardInfo().subscribe(( res: any) =>
     // ===================================================================>> Success: HTTP 200
     {
-    
+
       //===> Hide Loading Spinner UI
       this.isLoading = false;
 
       //===> Update Total Price by Today.
       this.totalSaleToday = res.total_sale_today;
-    
+
     // ===================================================================>> Not Success
     }, (err: any) => {
 
