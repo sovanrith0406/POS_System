@@ -52,6 +52,14 @@ export const appRoutes: Route[] = [
                 canActivate: [AuthGuard],
             },
 
+            // =============================>> Pos
+            {
+                path: 'pos',
+                loadChildren: () =>
+                    import('app/main/pos/pos.module').then((m) => m.PosModule),
+                canActivate: [AuthGuard],
+            },
+
             // =============================>> Product
             {
                 path: 'product',
