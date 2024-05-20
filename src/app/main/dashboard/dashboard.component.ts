@@ -39,7 +39,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
 
     //===> Call API for Dashobard Data.
-
+    this.getDashboardInfo();
 
   }
 
