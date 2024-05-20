@@ -78,4 +78,15 @@ export const defaultNavigation: NavigationItem[] = [
         link : '/users',
     },
 
+    //=========================================>>> My accout Profile
+
+    {
+        id   : 'profile',
+        title: 'គណនី',
+        type : 'basic',
+        icon : 'mat_outline:person',
+        link : '/my-profile'
+    },
+
+
 ];
