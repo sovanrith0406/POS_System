@@ -80,7 +80,7 @@ export class UserService {
         );
     }
 
-    // =================== Update password
+    // =================== block user
     blockUser(id: number = 0): any {
         return this.http.post(
             this.url + '/admin/users/block/' + id,

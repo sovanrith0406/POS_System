@@ -11,6 +11,16 @@ export const defaultNavigation: NavigationItem[] = [
         icon: 'mat_outline:dashboard',
         link: '/dashboard',
     },
+
+    //===================================>> POS
+    {
+        id       : 'pos',
+        title    : 'ការបញ្ជាទិញ',
+        type     : 'basic',
+        icon     : 'mat_solid:desktop_mac',
+        link     : '/pos',
+    },
+
     //===================================>> Product
     {
         hidden() {
