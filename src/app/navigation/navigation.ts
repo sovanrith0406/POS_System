@@ -21,6 +21,16 @@ export const defaultNavigation: NavigationItem[] = [
         link     : '/pos',
     },
 
+    //===================================>> Sale
+    {
+        id       : 'sale',
+        title    : 'ការលក់',
+        type     : 'basic',
+        icon     : 'mat_solid:shopping_cart',
+        link     : '/sales',
+    },
+
+
     //===================================>> Product
     {
         hidden() {
