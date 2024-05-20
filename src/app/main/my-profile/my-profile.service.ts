@@ -36,7 +36,7 @@ export class MyProfileService {
 
     // ==================== Get Profile
     getProfile(): any {
-        return this.http.get(this.url + '/my-profiles', this.httpOptions);
+        return this.http.get(this.url + '/my-profiles/listing', this.httpOptions);
     }
 
     // ==================== Update Profile

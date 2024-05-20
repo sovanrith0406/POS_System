@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 // ==========================================================>> Custom Library
 import { SharedModule } from 'app/shared/shared.module';
 import { ScrollbarModule } from 'helpers/directives/scrollbar';
-import { MyProfileComponent } from './my-profile.component';
+import { MyProfileComponent } from './listing/my-profile.component';
 import { OverviewComponent } from './overview/overview.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 
