@@ -41,4 +41,21 @@ export const defaultNavigation: NavigationItem[] = [
             },
         ],
     },
+
+    //===========================================>>User
+    {
+        hidden() {
+            isAdmin = true;
+            if(localStorage.getItem('role') == 'Admin'){
+                isAdmin = false;
+            }
+            return isAdmin;
+        },
+        id   : 'user',
+        title: 'អ្នកប្រើប្រាស់',
+        type : 'basic',
+        icon : 'mat_outline:people',
+        link : '/users',
+    },
+
 ];
