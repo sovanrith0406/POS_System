@@ -60,6 +60,16 @@ export const appRoutes: Route[] = [
                 canActivate: [AuthGuard],
             },
 
+            // =============================>> Sale
+            {
+                path: 'sales',
+                loadChildren: () =>
+                    import('app/main/sale/sale.module').then(
+                        (m) => m.SaleModule
+                    ),
+                canActivate: [AuthGuard],
+            },
+
             // =============================>> Product
             {
                 path: 'product',
