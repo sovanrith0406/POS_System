@@ -16,10 +16,9 @@
                     [svgIcon]="'heroicons_solid:chevron-right'"
                 >
                 </mat-icon>
-                <span class="ml-1 text-gray-600">ការលក់X</span>
+                <span class="ml-1 text-gray-600">ការលក់</span>
             </div>
         </div>
-
         <div class="flex items-center gap-2">
             <div class="custom-botton-flat">
                 <button
@@ -107,17 +106,16 @@
                                 <input
                                     matInput
                                     type="text"
-                                    (keyup.enter)="getData()"
+                                    (keyup.enter)="listing()"
                                     [(ngModel)]="receiptNumber"
                                     placeholder="ស្វែងរក ( លេខវិក្កយបត្រ )"
                                 />
                             </mat-form-field>
                         </div>
-
                         <button
                             class="min-w-10 max-w-10 rounded-full bg-gray-200"
                             mat-icon-button
-                            (click)="getData()"
+                            (click)="listing()"
                         >
                             <mat-icon
                                 class="icon-size-7"
@@ -260,7 +258,6 @@
                                             >មើល</span
                                         >
                                     </button>
-
                                     <button
                                         mat-menu-item
                                         (click)="print(element?.receipt_number)"

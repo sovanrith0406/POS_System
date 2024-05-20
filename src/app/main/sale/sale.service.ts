@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 // ==========================================================>> Core Library
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -32,7 +34,7 @@ export class SaleService {
         httpOptions['params'] = params;
         return this.http.get(this.url + '/admin/sales', httpOptions);
     }
-    // ==================== Delete One Product
+    // ==================== Print One Product
     print(receipt_number: number = 0): any {
         return this.http.get(
             this.url + '/admin/sales/print/' + receipt_number,
@@ -52,22 +54,22 @@ export class SaleService {
     b64toBlob(b64Data: any, contentType: any, sliceSize: any) {
         contentType = contentType || '';
         sliceSize = sliceSize || 512;
-        var byteCharacters = atob(b64Data);
-        var byteArrays = [];
+        const byteCharacters = atob(b64Data);
+        const byteArrays = [];
         for (
-            var offset = 0;
+            let offset = 0;
             offset < byteCharacters.length;
             offset += sliceSize
         ) {
-            var slice = byteCharacters.slice(offset, offset + sliceSize);
-            var byteNumbers = new Array(slice.length);
-            for (var i = 0; i < slice.length; i++) {
+            const slice = byteCharacters.slice(offset, offset + sliceSize);
+            const byteNumbers = new Array(slice.length);
+            for (let i = 0; i < slice.length; i++) {
                 byteNumbers[i] = slice.charCodeAt(i);
             }
-            var byteArray = new Uint8Array(byteNumbers);
+            const byteArray = new Uint8Array(byteNumbers);
             byteArrays.push(byteArray);
         }
-        var blob = new Blob(byteArrays, { type: contentType });
+        const blob = new Blob(byteArrays, { type: contentType });
         return blob;
     }
 }

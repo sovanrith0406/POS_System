@@ -14,10 +14,10 @@ import * as _moment from 'moment';
 
 // ==========================================================>> Custom Library
 import { ConfirmDialogComponent } from 'app/shared/confirm-dialog/confirm-dialog.component';
-import { DetailsComponent } from '../view-detail-dialog/details.component';
 import { SaleService } from '../sale.service';
 import { SnackbarService } from 'app/shared/services/snackbar.service';
 import * as FileSaver from 'file-saver';
+import { DetailsComponent } from '../view-detail-dialog/details.component';
 
 const MY_DATE_FORMAT = {
     parse: {
@@ -53,9 +53,7 @@ export class ListingComponent implements OnInit {
         'action',
     ];
     public dataSource: any;
-
-    public isLoading: boolean = false;
-    public isDownloading: boolean = false;
+    public isLoading: boolean = true;
 
     public data: any = [];
 
@@ -68,6 +66,8 @@ export class ListingComponent implements OnInit {
     public total: number = 10;
     public limit: number = 10;
 
+    public downloading: boolean = false;
+
     constructor(
         private _saleService: SaleService,
         private _snackBarService: SnackbarService,
@@ -75,12 +75,11 @@ export class ListingComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        // Get Data from API
-        this.getData(this.limit, this.page);
+        this.listing(this.limit, this.page);
     }
 
     //===================================>> List
-    getData(_limit: number = 10, _page: number = 1): any {
+    listing(_limit: number = 10, _page: number = 1): any {
         // Parameter Preparation
         const param: any = {
             limit: _limit,
@@ -102,14 +101,10 @@ export class ListingComponent implements OnInit {
             param.page = this.page;
         }
 
-        // Dispaly Spinner UI
         this.isLoading = true;
 
-        // Call API
         this._saleService.getData(param).subscribe(
             (res: any) => {
-                // console.log(res);
-
                 // Stop Loading
                 this.isLoading = false;
 
@@ -142,18 +137,15 @@ export class ListingComponent implements OnInit {
         if (event && event.pageSize) {
             this.limit = event.pageSize;
             this.page = event.pageIndex + 1;
-            this.getData(this.limit, this.page);
+            this.listing(this.limit, this.page);
         }
     }
 
     //=======================================>> View Sale
     view(row: any): void {
-        // console.log(row);
-
         const dialogConfig = new MatDialogConfig();
         dialogConfig.data = row;
         dialogConfig.width = '650px';
-
         const dialogRef = this._dialog.open(DetailsComponent, dialogConfig);
     }
 
@@ -195,10 +187,10 @@ export class ListingComponent implements OnInit {
 
     // ========== download receipt payment ============= \\
     print(row: any): void {
-        this.isDownloading = true;
+        this.downloading = true;
         this._saleService.print(row).subscribe(
             (res: any) => {
-                this.isDownloading = false;
+                this.downloading = false;
                 const blob = this._saleService.b64toBlob(
                     res.file_base64,
                     'application/pdf',
@@ -207,7 +199,7 @@ export class ListingComponent implements OnInit {
                 FileSaver.saveAs(blob, 'Invoice-' + row + '.pdf');
             },
             (err: any) => {
-                this.isDownloading = false;
+                this.downloading = false;
                 console.log(err);
             }
         );
