@@ -1,0 +1,123 @@
+version: "3.5"
+services:
+  db:
+    image: mysql:5.7.36
+    container_name: container_db
+    restart: unless-stopped
+    ports:
+      - 5000:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root@123
+      MYSQL_DATABASE: pos_db
+    volumes:
+      - ./db/mysql:/var/lib/mysql
+    networks:
+      - pos
+  
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: container_phpmyadmin
+    restart: always
+    ports:
+      - 5001:80
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: root@123
+    networks:
+      - pos
+
+  api:
+    container_name: container_api
+    restart: unless-stopped
+    build:
+      context: ./api/.
+      dockerfile: Dockerfile
+    volumes:
+      - ./api/app:/var/www/app
+      - ./api/resources:/var/www/resources
+      - ./api/routes:/var/www/routes
+      - ./api/storage:/var/www/storage
+      - ./api/database:/var/www/database
+    ports:
+      - 5002:8000
+    environment:
+      # Application
+      APP_NAME: POS
+      APP_KEY: base64:0RxlCIx0KnpD/TeoOaIKxgH6iu2cmrys3GO4y5cp5Rg=
+      APP_DEBUG: 1
+      APP_ENV: dev
+      APP_TIMEZONE: Asia/Phnom_Penh
+      APP_URL: http://localhost
+
+      # Database
+      DB_CONNECTION: mysql
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: pos_db
+      DB_USERNAME: root
+      DB_PASSWORD: root@123
+
+      # JWT
+      JWT_SECRET: MTO7OmBzXhbPI2bErLjV9XEFbpCn3MHCPxKdcBxiFHjuWJirIayTB9npa4cGNAFX
+
+      # File Service
+      FILE_URL: http://file:8000
+
+      # JS Report
+      JS_BASE_URL: https://sovanrith.jsreportonline.net
+      JS_USERNAME: sovanrith.tha@gmail.com
+      JS_PASSWORD: Rith@040603
+      JS_TEMPLATE: /Invoice/main
+
+      # # Telegram Bot
+      # TELEGRAM_BOT_TOKEN: 6484165108:AAEmVW0l50gh_Sl9GQCGhbma7679hUDOles
+      # TELEGRAM_CHAT_ID: -1002116160875
+      # TELEGRAM_CHAT_ORDER: -1002069690121
+      # TELEGRAM_CHAT_JSREPORT: -1002083957840
+      TELEGRAM_BOT_TOKEN: 8197877371:AAFNN39793FxFRNi7upqbTCuWiHtsCp7OYI
+      TELEGRAM_CHAT_ID: -1002468310351
+      TELEGRAM_CHAT_ORDER: -1002468310351
+    networks:
+      - pos
+
+  file:
+    container_name: container_file
+    build:
+      context: ./file/.
+      dockerfile: Dockerfile
+    volumes:
+      - ./file/public:/var/www/public
+    ports:
+      - 5003:8000
+    environment:
+      # Application
+      APP_NAME: File Service
+      APP_KEY: base64:0RxlCIx0KnpD/TeoOaIKxgH6iu2cmrys3GO4y5cp5Rg=
+      APP_DEBUG: 1
+      APP_ENV: dev
+      APP_URL: http://localhost
+
+    networks:
+      - pos
+
+  report:
+    image: jsreport/jsreport
+    container_name: container_report
+    ports:
+      - 5004:5488
+    networks:
+      - pos
+
+  web:
+    container_name: pos-web
+    build:
+      context: ./web/.
+      dockerfile: Dockerfile
+    ports:
+      - 5005:80
+    networks:
+      - pos
+
+networks:
+  pos:  
+    driver: bridge
